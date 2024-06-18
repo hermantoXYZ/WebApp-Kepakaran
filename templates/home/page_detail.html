@@ -1,0 +1,24 @@
+{% extends 'home/base.html' %}
+{% block title %}{{ news.title }}{% endblock %}
+{% block content %}
+
+
+<div class="swiper mySwiper">
+  <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="/media/assets/people-2562626_1280.jpg" alt="Slide 1"></div>
+  </div>
+</div>
+
+<div class="container-page">
+  <main>
+      <section>
+          <h2>{{ page.title }}</h2>
+          <p>{{ page.content|linebreaks }}</p>
+      </section>
+     
+  </main>
+</div>
+
+
+
+    {% endblock %}

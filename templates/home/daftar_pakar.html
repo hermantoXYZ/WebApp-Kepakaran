@@ -1,0 +1,16 @@
+{% extends 'home/base.html' %}
+{% block title %}{{ news.title }}{% endblock %}
+{% block content %}
+<h1>Daftar Pakar</h1>
+<ul>
+    {% for pakar in pakar_list %}
+    <li>
+        <a href="{% url 'detail_pakar' slug=pakar.user.username %}">
+            <img src="{{ pakar.user.userprofile.gambar.url }}" alt="{{ pakar.user.username }}" width="100">
+            <h2>{{ pakar.user.username }}</h2>
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

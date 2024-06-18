@@ -1,0 +1,55 @@
+<h1>{{ pakar.user.username }}</h1>
+<img src="{{ pakar.user.userprofile.gambar.url }}" alt="{{ pakar.user.username }}" width="200">
+<p><strong>Email:</strong> {{ pakar.user.userprofile.email }}</p>
+<p><strong>Alamat:</strong> {{ pakar.user.userprofile.alamat }}</p>
+<p><strong>No HP:</strong> {{ pakar.user.userprofile.no_hp }}</p>
+
+<h2>Biografi</h2>
+<p>{{ pakar.biografi }}</p>
+
+<h2>Minat Penelitian</h2>
+<p>{{ pakar.minat_penelitian }}</p>
+
+<h2>Bidang Kepakaran</h2>
+<ul>
+    {% for bidang in pakar.bidang_kepakaran.all %}
+    <li>{{ bidang.nama_bidang }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Pendidikan</h2>
+<ul>
+    {% for pendidikan in pakar.pendidikan.all %}
+    <li>{{ pendidikan.pendidikan }} - {{ pendidikan.tahun }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Publikasi Pilihan</h2>
+<ul>
+    {% for publikasi in pakar.publikasi.all %}
+    <li><a href="{{ publikasi.link_publikasi }}">{{ publikasi.judul_publikasi }}</a> ({{ publikasi.tahun_publikasi }})</li>
+    {% endfor %}
+</ul>
+
+<h2>Penelitian</h2>
+<ul>
+    {% for penelitian in pakar.penelitian.all %}
+    <li>{{ penelitian.judul_penelitian }} ({{ penelitian.tahun_penelitian }})</li>
+    <p>{{ penelitian.deskripsi_penelitian }}</p>
+    {% endfor %}
+</ul>
+
+<h2>Riwayat Penelitian</h2>
+<ul>
+    {% for riwayat in pakar.riwayat_penelitian.all %}
+    <li>{{ riwayat.judul_riwayat }} ({{ riwayat.tahun_riwayat }})</li>
+    <p>{{ riwayat.deskripsi_riwayat }}</p>
+    {% endfor %}
+</ul>
+
+<h2>Karya Ilmiah</h2>
+<ul>
+    {% for karya in pakar.karya_ilmiah.all %}
+    <li><a href="{{ karya.link_karya }}">{{ karya.judul_karya }}</a> ({{ karya.tahun_karya }})</li>
+    {% endfor %}
+</ul>

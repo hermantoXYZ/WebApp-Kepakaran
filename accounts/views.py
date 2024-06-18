@@ -1,11 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import authenticate, login
 from .forms import LoginForm, SignUpForm
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.decorators import login_required
-
 from django.contrib.auth.views import PasswordResetView
+
+from .models import PostNews, Page
 
 class CustomPasswordResetView(PasswordResetView):
     success_url = '/accounts/reset/password/done/'
@@ -29,6 +30,9 @@ def login_view(request):
             elif user is not None and user.is_user:
                 login(request, user)
                 return redirect('dashboard_user')
+            elif user is not None and user.is_dosen:
+                login(request, user)
+                return redirect('dashboard_dosen')
             else:
                 msg= 'invalid credentials'
         else:
@@ -62,3 +66,28 @@ def logout_view(request):
 #     # Your dashboard logic goes here
 #     return render(request, 'dashboard.html')
 
+
+
+def index(request):
+    news_list = PostNews.objects.all()
+
+    context = {
+        'news_list': news_list
+    }
+    
+    return render(request, 'home/index.html', context)
+
+def news_detail(request, slug):
+    news = get_object_or_404(PostNews, slug=slug)
+    context = {
+        'news': news
+    }
+    return render(request, 'home/news_detail.html', context)
+
+
+def page_detail (request, slug):
+    page = get_object_or_404(Page, slug=slug)
+    context = {
+        'page': page
+    }
+    return render(request, 'home/page_detail.html', context)

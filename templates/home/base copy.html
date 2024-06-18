@@ -1,0 +1,217 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/home/styles.css' %}?v={{ STATIC_VERSION }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@11.1.4/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper@11.1.4/swiper-bundle.min.js"></script>
+</head>
+<body><header>
+    <div class="top-bar">
+        <div class="container">
+            <div class="flags">
+                <img src="/media/logo/id.png" alt="Indonesia Flag">
+                <img src="/media/logo/en.png" alt="UK Flag">
+            </div>
+            <div class="top-links">
+                <a href="#">Profil</a>
+                <a href="#">Akademik</a>
+                <a href="#">Program Studi</a>
+                <a href="#">Karya Ilmiah</a>
+                <a href="#" class="covid">COVID19</a>
+                <a href="#">Kontak</a>
+                <a href="#">Cari</a>
+            </div>
+        </div>
+    </div>
+    <div class="main-nav">
+        <div class="container">
+            <div class="logo">
+                <img src="/media/logo/LOGO.png" alt="Logo">
+                <!-- <span>INSTITUT TEKNOLOGI BANDUNG</span> -->
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#">Profil</a></li>
+                    <li><a href="#">Akademik</a></li>
+                    <li><a href="#">Program Studi</a></li>
+                    <li><a href="#">Karya Ilmiah</a></li>
+                    <li><a href="#">Kemahasiswaan dan Alumni</a></li>
+                    <li><a href="#">Penelitian dan PKM</a></li>
+                  
+                </ul>
+                
+            </nav>
+            <div class="mobile-menu-icon">
+                <span>&#9776;</span>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="mobile-menu">
+    <div class="mobile-menu-content">
+        <div>
+            <h3>Tentang FEB</h3>
+            <ul>
+                <li><a href="#">Profil</a></li>
+                <li><a href="#">Akademik</a></li>
+                <li><a href="#">Program Studi</a></li>
+                <li><a href="#">Karya Ilmiah</a></li>
+                <li><a href="#">Kemahasiswaan dan Alumni</a></li>
+                <li><a href="#">Penelitian dan PKM</a></li>
+            </ul>
+        </div>
+    
+        <div>
+            <h3>Pendidikan</h3>
+            <ul>
+                <li><a href="#">Fakultas dan Sekolah</a></li>
+                <li><a href="#">Program Studi</a></li>
+                <li><a href="#">Kelompok Keahlian/Keilmuan</a></li>
+                <li><a href="#">Beasiswa</a></li>
+                <li><a href="#">Staf</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3>Kampus</h3>
+            <ul>
+                <li><a href="#">Aktivitas Mahasiswa</a></li>
+                <li><a href="#">Jelajah</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3>Alumni</h3>
+            <ul>
+                <li><a href="#">Program</a></li>
+                <li><a href="#">Profil</a></li>
+                <li><a href="#">Donasi</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{%block content%}
+{%endblock%}
+
+
+
+<footer class="footer">
+    <div class="footer-column">
+        <h3>Tentang FEB-UNM</h3>
+        <ul>
+            <li><a href="/">Sejarah</a></li>
+            <li><a href="/">Visi dan Misi</a></li>
+            <li><a href="/">Struktur Organisasi</a></li>
+            <li><a href="/">Renstra</a></li>
+            <li><a href="/">Fasilitas</a></li>
+            <li><a href="/">Pimpinan</a></li>
+            <li><a href="/">Tenaga Kependidikan</a></li>
+            <li><a href="/">Tenaga Pengajar</a></li>
+            <li><a href="/">Unit Penjaminan Mutu</a></li>
+           
+        </ul>
+    </div>
+    <div class="footer-column">
+        <h3>Program Studi</h3>
+        <ul>
+            <li><a href="http://ep.fe.unm.ac.id/">Ekonomi Pembangunan</a></li>
+            <li><a href="http://manajemen.fe.unm.ac.id/">Manajemen S1</a></li>
+            <li><a href="http://pekon.fe.unm.ac.id/">Pendidikan Ekonomi S1</a></li>
+            <li><a href="http://pspa.fe.unm.ac.id/">Pendidikan Akuntansi S1</a></li>
+            <li><a href="http://akuntansi.fe.unm.ac.id/">Akutansi S1</a></li>
+           <li><a href="http://kewirausahaan.fe.unm.ac.id/">kewirausahaan S1</a></li> 
+           <li><a href="http://bisgid.fe.unm.ac.id/">Bisnis Digital</a></li>
+        </ul>
+    </div>
+    <div class="footer-column">
+        <h3>Akademik</h3>
+        <ul>
+          <li><a href="/">SOP Layanan</a></li>
+          <li><a href="/">Kalender Akademik</a></li>
+          <li><a href="/">Persuratan</a></li>
+          <li><a href="/">Akreditasi Program Studi</a></li>
+          <li><a href="/">Semester Antara</a></li>
+          <li><a href="/">Kontak</a></li>
+        </ul>
+    </div>
+    <div class="footer-column">
+        <h3>Penelitian</h3>
+        <ul>
+            <li>Penelitian</li>
+            <li>Kelompok Keahlian/Keilmuan</li>
+            <li>Jurnal</li>
+        </ul>
+    </div>
+    <div class="footer-column">
+        <h3>Pengabdian</h3>
+        <ul>
+            <li>LPIK</li>
+            <li>LPPM</li>
+            <li>LPIT</li>
+            <li>Kemitraan</li>
+            <li>BPUDL</li>
+        </ul>
+    </div>
+    <div class="footer-column">
+        <h3>Penelitian</h3>
+        <ul>
+            <li>Penelitian</li>
+            <li>Kelompok Keahlian/Keilmuan</li>
+            <li>Jurnal</li>
+        </ul>
+    </div>
+</footer>
+<div class="footer-social">
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-youtube"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-tiktok"></i></a>
+</div>
+<div class="footer-bottom">
+    <p>&copy; 2023 HermantoXYZ. All rights reserved.</p>
+</div>
+
+
+   
+    <script>
+document.querySelector('.mobile-menu-icon').addEventListener('click', () => {
+    const mobileMenu = document.querySelector('.mobile-menu');
+    if (mobileMenu.style.display === 'block') {
+        mobileMenu.style.display = 'none';
+    } else {
+        mobileMenu.style.display = 'block';
+    }
+});
+    </script>
+
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        loop: true
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const headers = document.querySelectorAll('.footer-column h3');
+        headers.forEach(header => {
+            header.addEventListener('click', function() {
+                this.parentElement.classList.toggle('open');
+            });
+        });
+    });
+</script>
+<script src="/static/js/swipperNews.js"></script>
+</body>
+</html>

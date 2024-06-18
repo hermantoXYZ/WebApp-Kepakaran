@@ -1,0 +1,154 @@
+<!-- dashboard/pelanggan.html -->
+
+{% extends 'dashboard/base.html' %}
+{% block title %}Dashboard Dosen{% endblock %}
+{% block content %}
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active"><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="/"><i class="fas fa-table"></i> Undanganku</a></li>
+                    <li><a href="#"><i class="fas fa-credit-card"></i> Invoice</a></li>
+                    <li><a href="#"><i class="fas fa-tools"></i> Tutorial</a></li>
+                </ul>
+                <h3>Account Pages</h3>
+                <ul>
+                    <li><a href="/"><i class="fas fa-user"></i> Profile</a></li>
+                    <li><a href="{% url 'logout' %}"><i class="fas fa-sign-in-alt"></i> Sign Out</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+
+
+        <main class="main-content">
+            <header class="main-header">
+                <div class="breadcrumb">
+                    <span>Pages / Dashboard</span>
+                    <h2>Dashboard</h2>
+                </div>
+                <div class="header-right">
+                    <a href="#" class="btn-add"><i class="fas fa-plus"></i> Undanganku</a>
+                    <a href="#" class="bar-icon"><i class="fas fa-bars sidebar-toggle"></i></a>
+                </div>
+            </header>
+            <section class="main-section">
+                <div class="info-container">
+                    <div class="info-card">
+                        <div class="info-content">
+                            <p class="info-title">Undangan yang Dibuat</p>
+                            <h2>$53,000 <span class="info-change positive">+55%</span></h2>
+                        </div>
+                        <div class="info-icon">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-content">
+                            <p class="info-title">Tamu Undangan</p>
+                            <h2>2,300 <span class="info-change positive">+3%</span></h2>
+                        </div>
+                        <div class="info-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-content">
+                            <p class="info-title">Ucapan & Do'a</p>
+                            <h2>+3,020 <span class="info-change negative">-14%</span></h2>
+                        </div>
+                        <div class="info-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-content">
+                            <p class="info-title">Klik Undangan saya</p>
+                            <h2>$173,000 <span class="info-change positive">+8%</span></h2>
+                        </div>
+                        <div class="info-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="card">
+                        <div class="card-content">
+                            <p class="tag">Information us</p>
+                            <h2>Get started</h2>
+                            <p>Wealth creation is a revolutionary recent positive-sum game. It is all about who takes the opportunity first.</p>
+                            <a href="#" class="read-more">Read more →</a>
+                        </div>
+                        <div class="card-logo">
+                            <img src="/" alt="chakra">
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <h2>Work with the rockets</h2>
+                            <p>Wealth creation is a revolutionary recent positive-sum game. It is all about who takes the opportunity first.</p>
+                            <a href="#" class="read-more">Read more →</a>
+                        </div>
+                        <div class="card-image">
+                            <img src="/" alt="Work with the rockets">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                
+                    <table class="authors-table">
+                        <thead>
+                            <tr>
+                                <th>Author</th>
+                                <th>Function</th>
+                                <th>Status</th>
+                                <th>Employed</th>
+                                <th>Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="author-info">
+                                    <img src="https://via.placeholder.com/40" alt="Esthera Jackson">
+                                    <div class="author-details">
+                                        <span class="author-name">Esthera Jackson</span>
+                                        <span class="author-email">alexa@simmmple.com</span>
+                                    </div>
+                                </td>
+                                <td class="function-info">
+                                    <span class="function-role">Organization</span>
+                                    <span class="function-title">Manager</span>
+                                </td>
+                                <td class="status">
+                                    <span class="status-online">Online</span>
+                                </td>
+                                <td class="employed">14/06/21</td>
+                                <td class="edit"><a href="#">Edit</a></td>
+                            </tr>
+                            <tr>
+                                <td class="author-info">
+                                    <img src="https://via.placeholder.com/40" alt="Alexa Liras">
+                                    <div class="author-details">
+                                        <span class="author-name">Alexa Liras</span>
+                                        <span class="author-email">laurent@simmmple.com</span>
+                                    </div>
+                                </td>
+                                <td class="function-info">
+                                    <span class="function-role">Developer</span>
+                                    <span class="function-title">Programmer</span>
+                                </td>
+                                <td class="status">
+                                    <span class="status-offline">Offline</span>
+                                </td>
+                                <td class="employed">12/05/21</td>
+                                <td class="edit"><a href="#">Edit</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
+        </main>
+    </div>
+{% endblock %}
+</body>
+</html>
