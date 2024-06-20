@@ -319,24 +319,24 @@
     }
 
     .header-carousel .header-carousel-item {
-        height: 1300px;
+        height: 600px;
     }
 }
 
 @media (max-width: 767px) {
     .header-carousel .header-carousel-item {
-        height: 950px;
+        height: 500px;
     }
 
     .header-carousel .owl-nav .owl-prev {
-        bottom: -30px;
+        bottom: 10px;
         left: 50%;
         transform: translateX(-50%);
         margin-left: -45px;
     }
 
     .header-carousel .owl-nav .owl-next {
-        bottom: -30px;
+        bottom: 10px;
         left: 50%;
         transform: translateX(-50%);
         margin-left: 45px;
