@@ -3,9 +3,7 @@ from .models import User, PostNews, Category, Page
 
 # Register your models here.
 
-
-
-from .models import BidangKepakaran, Pakar, Pendidikan, Publikasi, Penelitian, RiwayatPenelitian, InTheNews
+from .models import BidangKepakaran, Pakar, Pendidikan, Penelitian, InTheNews, Pengabdianan, Organisasi, Book
 
 # class UserProfileAdmin(admin.ModelAdmin):
 #     list_display = ('user', 'email', 'no_hp', 'social_media_ig', 'social_media_twitter', 'social_media_facebook')
@@ -20,23 +18,35 @@ class PendidikanInline(admin.TabularInline):
     model = Pendidikan
     extra = 1
 
-class PublikasiInline(admin.TabularInline):
-    model = Publikasi
-    extra = 1
+# class PublikasiInline(admin.TabularInline):
+#     model = Publikasi
+#     extra = 1
 
 class PenelitianInline(admin.TabularInline):
     model = Penelitian
     extra = 1
 
-class RiwayatPenelitianInline(admin.TabularInline):
-    model = RiwayatPenelitian
-    extra = 1
+# class RiwayatPenelitianInline(admin.TabularInline):
+#     model = RiwayatPenelitian
+#     extra = 1
 
 class InTheNewsInline(admin.TabularInline):
     model = InTheNews
     extra = 1
 
 
+class PengabdiananInline(admin.TabularInline):
+    model = Pengabdianan
+    extra = 1
+
+class OrganisasiInline(admin.TabularInline):
+    model = Organisasi
+    extra = 1
+
+
+class BookInline(admin.TabularInline):
+    model = Book
+    extra = 1
 
 
 
@@ -44,7 +54,7 @@ class InTheNewsInline(admin.TabularInline):
 class PakarAdmin(admin.ModelAdmin):
     list_display = ('user', 'get_bidang_kepakaran', 'biografi', 'minat_penelitian')
     search_fields = ('user__username', 'biografi', 'minat_penelitian')
-    inlines = [PendidikanInline, PublikasiInline, PenelitianInline, RiwayatPenelitianInline, InTheNewsInline]
+    inlines = [PendidikanInline,  PengabdiananInline, OrganisasiInline, BookInline, PenelitianInline, InTheNewsInline,]
     filter_horizontal = ('bidang_kepakaran',)
 
     def get_bidang_kepakaran(self, obj):

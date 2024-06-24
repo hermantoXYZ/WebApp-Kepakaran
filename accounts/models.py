@@ -119,35 +119,41 @@ class Pendidikan(models.Model):
     def __str__(self):
         return f"{self.pakar.user.username} - {self.pendidikan}"
 
-class Publikasi(models.Model):
-    pakar = models.ForeignKey(Pakar, on_delete=models.CASCADE, related_name='publikasi')
-    judul_publikasi = models.CharField(max_length=200)
-    tahun_publikasi = models.IntegerField()
-    link_publikasi = models.URLField()
-    tim_publikasi = models.CharField(max_length=200)
+# class Publikasi(models.Model):
+#     pakar = models.ForeignKey(Pakar, on_delete=models.CASCADE, related_name='publikasi')
+#     judul_publikasi = models.CharField(max_length=200)
+#     tahun_publikasi = models.IntegerField()
+#     link_publikasi = models.URLField()
+#     tim_publikasi = models.CharField(max_length=200)
 
-    def __str__(self):
-        return self.judul_publikasi
+#     def __str__(self):
+#         return self.judul_publikasi
+
+CATEGORY_CHOICES = (
+    ('nasional', 'Nasional'),
+    ('Internasional', 'Internasional'),
+)
 
 class Penelitian(models.Model):
     pakar = models.ForeignKey(Pakar, on_delete=models.CASCADE, related_name='penelitian')
     judul_penelitian = models.CharField(max_length=200)
-    tahun_penelitian = models.IntegerField()
-    link_penelitian = models.URLField()
-    tim_penelitian = models.CharField(max_length=200)
+    tahun_penelitian = models.IntegerField(blank=True, null=True)
+    link_penelitian = models.URLField(blank=True, null=True)
+    tim_penelitian = models.CharField(max_length=200, blank=True, null=True)
+    category_penelitian = models.CharField(max_length=200, choices=CATEGORY_CHOICES)
 
     def __str__(self):
         return self.judul_penelitian
 
-class RiwayatPenelitian(models.Model):
-    pakar = models.ForeignKey(Pakar, on_delete=models.CASCADE, related_name='riwayat_penelitian')
-    judul_riwayat = models.CharField(max_length=200)
-    tahun_riwayat = models.IntegerField()
-    link_riwayat_penelitian = models.URLField()
-    tim_riwayat = models.CharField(max_length=200)
+# class RiwayatPenelitian(models.Model):
+#     pakar = models.ForeignKey(Pakar, on_delete=models.CASCADE, related_name='riwayat_penelitian')
+#     judul_riwayat = models.CharField(max_length=200)
+#     tahun_riwayat = models.IntegerField()
+#     link_riwayat_penelitian = models.URLField()
+#     tim_riwayat = models.CharField(max_length=200)
 
-    def __str__(self):
-        return self.judul_riwayat
+#     def __str__(self):
+#         return self.judul_riwayat
 
 class InTheNews(models.Model):
     pakar = models.ForeignKey(Pakar, on_delete=models.CASCADE, related_name='the_news')
@@ -161,3 +167,33 @@ class InTheNews(models.Model):
         return self.judul_news
     
 
+
+class Pengabdianan(models.Model):
+    pakar = models.ForeignKey(Pakar, on_delete=models.CASCADE, related_name='pengabdian')
+    judul_pengabdian = models.CharField(max_length=200, blank=True, null=True)
+    tahun_pengabdian = models.IntegerField(blank=True, null=True)
+    link_pengabdian = models.URLField(blank=True, null=True)
+    tim_pengabdian = models.CharField(max_length=200, blank=True, null=True)
+
+    def __str__(self):
+        return self.judul_pengabdian
+    
+class Book (models.Model):
+    pakar = models.ForeignKey(Pakar, on_delete=models.CASCADE, related_name='book')
+    judul_book = models.CharField(max_length=200, blank=True, null=True)
+    tahun_book = models.IntegerField(blank=True, null=True)
+    link_book = models.URLField(blank=True, null=True)
+    cover_book = models.ImageField(upload_to=rename_image, null=True, blank=True)
+
+    def __str__(self):
+        return self.judul_book
+    
+
+class Organisasi(models.Model):
+    pakar = models.ForeignKey(Pakar, on_delete=models.CASCADE, related_name='organisasi')
+    nama_organisasi = models.CharField(max_length=200, blank=True, null=True)
+    tahun_organisasi = models.IntegerField(blank=True, null=True)
+    jabatan_organisasi = models.CharField(max_length=200, blank=True, null=True)
+
+    def __str__(self):
+        return self.nama_organisasi

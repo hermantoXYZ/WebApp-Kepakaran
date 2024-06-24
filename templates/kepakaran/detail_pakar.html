@@ -149,16 +149,16 @@
                 <div class="container bg-white py-5">
                     <div class="row px-3">
                         <div class="col-12">
-                            <h2 class="title position-relative pb-2 mb-4">Publikasi</h2>
+                            <h2 class="title position-relative pb-2 mb-4">Organisasi</h2>
                         </div>
                         <div class="col-12">
                             <div class="border-left border-primary pt-2 pl-4 ml-2">
                               
-                                {% for publikasi in pakar.publikasi.all %}
+                                {% for organisasi in pakar.organisasi.all %}
                                 <div class="position-relative mb-4">
                                     <i class="fa fa-arrow-right text-primary position-absolute" style="top: 3px; left: -24px;"></i>
-                                   <a href="{{ publikasi.link_publikasi }}" target="_blank"><h5 class="mb-1">{{ publikasi.judul_publikasi }}</h5></a>
-                                    <p class="mb-2">{{ publikasi.tim_publikasi }} | <small>{{ publikasi.tahun_publikasi }}</small></p>
+                                   <h5 class="mb-1">{{ organisasi.nama_organisasi }}</h5>
+                                    <p class="mb-2">{{ organisasi.jabatan_organisasi }} | <small>{{ organisasi.tahun_organisasi }}</small></p>
                                     <!-- <p>Tempor eos dolore amet tempor dolor tempor. Dolore ea magna sit amet dolor eirmod. Eos ipsum est tempor dolor. Clita lorem kasd sed ea lorem diam ea lorem eirmod duo sit ipsum stet lorem diam</p> -->
                                 </div>
                                 {% endfor %}
@@ -273,16 +273,18 @@
                 <div class="container bg-white py-5">
                     <div class="row px-3">
                         <div class="col-12">
-                            <h2 class="title position-relative pb-2 mb-4">Riwayat Penelitian</h2>
+                            <h2 class="title position-relative pb-2 mb-4">Buku</h2>
                         </div>
                         <div class="col-12">
                             <div class="border-left border-primary pt-2 pl-4 ml-2">
                               
-                                {% for riwayat in pakar.riwayat_penelitian.all %}
+                                {% for book in pakar.book.all %}
                                 <div class="position-relative mb-4">
                                     <i class="fa fa-arrow-right text-primary position-absolute" style="top: 3px; left: -24px;"></i>
-                                   <a href="{{ riwayat.link_riwayat }}" target="_blank"> <h5 class="mb-1">{{ riwayat.judul_riwayat }}</h5></a>
-                                    <p class="mb-2">{{ riwayat.tim_riwayat }} | <small>{{ riwayat.tahun_riwayat }}</small></p>
+                                   <a href="{{ book.link_book }}" target="_blank"> <h5 class="mb-1">{{ book.judul_book }}</h5></a>
+                                    <p class="mb-2">{{ book.tahun_book }} | 
+                                        <!-- <small>{{ book.tahun_book }}</small> -->
+                                    </p>
                                     <!-- <p>Tempor eos dolore amet tempor dolor tempor. Dolore ea magna sit amet dolor eirmod. Eos ipsum est tempor dolor. Clita lorem kasd sed ea lorem diam ea lorem eirmod duo sit ipsum stet lorem diam</p> -->
                                 </div>
                                 {% endfor %}
@@ -332,6 +334,28 @@
                 </div>
                 <!-- Services End -->
 
+
+                <div class="container bg-white py-5">
+                    <div class="row px-3">
+                        <div class="col-12">
+                            <h2 class="title position-relative pb-2 mb-4">Pengabdian</h2>
+                        </div>
+                        <div class="col-12">
+                            <div class="border-left border-primary pt-2 pl-4 ml-2">
+                              
+                                {% for pengabdian in pakar.pengabdian.all %}
+                                <div class="position-relative mb-4">
+                                    <i class="fa fa-arrow-right text-primary position-absolute" style="top: 3px; left: -24px;"></i>
+                                    <a href="{{ penelitian.link_penelitian }}" target="_blank"><h5 class="mb-1">{{ pengabdian.judul_pengabdian }}</h5></a>
+                                    <p class="mb-2">{{ pengabdian.tim_pengabdian }} | <small>{{ pengabdian.tahun_pengabdian }}</small></p>
+                                    <!-- <p>{{ penelitian.deskripsi_penelitian }}</p> -->
+                                </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
                 <!-- Testimonial Start -->
