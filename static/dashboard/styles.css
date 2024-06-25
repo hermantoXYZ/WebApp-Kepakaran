@@ -74,8 +74,8 @@ body {
 
 .sidebar-nav a:hover,
 .sidebar-nav li.active a {
-    background-color: #e0f7fa;
-    color: #00796b;
+    background-color: #0f4229;
+    color: #ffffff;
 }
 
 .sidebar-nav i {
@@ -120,17 +120,17 @@ body {
 
 .header-right a {
     margin-right: 10px;
-    color: #00796b;
+    color: #ffffff;
     text-decoration: none;
 }
 
 .header-right i {
     margin-right: 10px;
-    color: #666;
+    color: #fff;
 }
 
 .btn-add {
-    background-color: #e0f7fa;
+    background-color: #0f4229;
     padding: 10px;
     border-radius: 10px;
 }
@@ -367,11 +367,11 @@ body {
 
 .profile-card {
     display: flex;
-    background-color: #69cf2b;
+    background-color: #348e38;
     align-items: center;
     padding: 20px;
     border-bottom: 1px solid #ddd;
-    border-radius: 10px;   
+    border-radius: 10px;
 }
 
 .profile-header {
@@ -520,7 +520,7 @@ body {
 }
 
 .input-group button {
-    background-color: #00796b;
+    background-color: #0f4229;
     color: #fff;
     padding: 10px 15px;
     border: none;
