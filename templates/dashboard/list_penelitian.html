@@ -1,0 +1,59 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}Add Penelitian{% endblock %}
+{% block content %}
+
+
+
+<div class="main-content">
+    <header class="main-header">
+        <div class="breadcrumb">
+            <span>Pages / Add Penelitian</span>
+            <h2>Penelitian</h2>
+        </div>
+        <div class="header-right">
+            <a href="{% url 'add_penelitian' %}" class="btn-add"><i class="fas fa-plus"></i> Add Penelitian</a>
+            <a href="#" class="bar-icon"><i class="fas fa-bars sidebar-toggle"></i></a>
+        </div>
+    </header>
+
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Judul</th>
+                    <th>Tahun</th>
+                    <th>Category</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% if penelitian_list %}
+                {% for penelitian in penelitian_list %}
+                <tr>
+                    <td>{{ penelitian.judul_penelitian }}</td>
+                    <td>{{ penelitian.tahun_penelitian }}</td>
+                    <td>{{ penelitian.get_category_penelitian_display }}</td>
+                    <td class="action"><a href="{% url 'edit_penelitian' penelitian.id %}" class="btn-edit"><i class="fas fa-pencil-alt"></i>Edit</a>
+                        <a href="{% url 'delete_penelitian' penelitian.id %}" class="btn-delete"
+                        onclick="return confirm('Apakah Anda yakin ingin menghapus aset ini?');">
+                        <i class="fas fa-trash"></i> Delete
+                     </a></td>
+                    
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="4">Tidak ada penelitian yang tersedia.</td>
+                </tr>
+                {% endif %}
+                
+                
+               
+                
+                
+                
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

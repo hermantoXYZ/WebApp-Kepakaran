@@ -1,0 +1,59 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}Add Penelitian{% endblock %}
+{% block content %}
+
+
+
+<div class="main-content">
+    <header class="main-header">
+        <div class="breadcrumb">
+            <span>Pages / Add News</span>
+            <h2>News</h2>
+        </div>
+        <div class="header-right">
+            <a href="{% url 'add_news' %}" class="btn-add"><i class="fas fa-plus"></i> Add News</a>
+            <a href="#" class="bar-icon"><i class="fas fa-bars sidebar-toggle"></i></a>
+        </div>
+    </header>
+
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Judul</th>
+                    <th>Terbit</th>
+                    <th>Media</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% if news_list %}
+                {% for news in news_list %}
+                <tr>
+                    <td>{{ news.judul_news }}</td>
+                    <td>{{ news.tanggal_terbit }}</td>
+                    <td>{{ news.media }}</td>
+                    <td class="action"><a href="{% url 'edit_news' news.id %}" class="btn-edit"><i class="fas fa-pencil-alt"></i>Edit</a>
+                        <a href="{% url 'delete_news' news.id %}" class="btn-delete"
+                        onclick="return confirm('Apakah Anda yakin ingin menghapus News ini?');">
+                        <i class="fas fa-trash"></i> Delete
+                     </a></td>
+                    
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="4">Tidak ada News yang tersedia.</td>
+                </tr>
+                {% endif %}
+                
+                
+               
+                
+                
+                
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

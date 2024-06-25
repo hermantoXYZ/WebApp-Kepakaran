@@ -1,0 +1,49 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}Edit Organisasi{% endblock %}
+{% block content %}
+
+
+
+<div class="main-content">
+    <header class="main-header">
+        <div class="breadcrumb">
+            <span>Pages / Edit Organisasi</span>
+            <h2>Organisasi</h2>
+        </div>
+        <div class="header-right">
+            <a href="{% url 'add_organisasi' %}" class="btn-add"><i class="fas fa-plus"></i> Add Organisasi</a>
+            <a href="#" class="bar-icon"><i class="fas fa-bars sidebar-toggle"></i></a>
+        </div>
+    </header>
+
+    <div class="container-ku">
+    <div class="form-container">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-section">
+          
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="{{ form_organisasi.nama_organisasi.id_for_label }}">Nama Organisasi</label>
+                        {{ form_organisasi.nama_organisasi }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form_organisasi.tahun_organisasi.id_for_label }}">Tahun</label>
+                        {{ form_organisasi.tahun_organisasi }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form_organisasi.jabatan_organisasi.id_for_label }}">Jabatan</label>
+                        {{ form_organisasi.jabatan_organisasi }}
+                    </div>
+                </div>
+             
+                
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Simpan Data</button>
+        </form>
+      
+    </div>
+</div>
+
+{% endblock %}

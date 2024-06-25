@@ -13,9 +13,35 @@
 <div class="dashboard">
         <aside class="sidebar">
             <div class="sidebar-header">
-                <img src="/media/logo/invite-black.png" class="logo-dashboard" alt="Logo">
+                <!-- <img src="/media/logo/invite-black.png" class="logo-dashboard" alt="Logo"> -->
+             
                 <a href="#" class="close-btn" id="close-btn"><i class="fas fa-times"></i></a>
             </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active"><a href="{% url 'dashboard_dosen' %}"><i class="fas fa-home"></i> Dashboard</a></li>
+                </ul>
+                <h3>Menu Kepakaran</h3>
+                <ul>
+                <li><a href="#"><i class="fas fa-credit-card"></i>Bidang Kepakaran</a></li>
+                <li><a href="/"><i class="fas fa-table"></i>Minat Penelitian</a></li>
+                </ul>
+                <ul>
+                    <li><a href="{% url 'list_pendidikan' %}"><i class="fas fa-credit-card"></i>Pendidikan</a></li>
+                    <li><a href="{% url 'list_organisasi' %}"><i class="fas fa-tools"></i> Organisasi</a></li>
+                    <li><a href="{% url 'list_penelitian' %}"><i class="fas fa-table"></i> Penelitian</a></li>
+                    <li><a href="{% url 'list_book' %}"><i class="fas fa-table"></i>Buku</a></li>
+                    <li><a href="{% url 'list_pengabdian' %}"><i class="fas fa-table"></i>Pengabdian</a></li>
+                    <li><a href="{% url 'list_news' %}"><i class="fas fa-newspaper"></i>News/Media</a></li>
+                </ul>
+                <h3>Account Pages</h3>
+                <ul>
+                    <li><a href="{% url 'profile' %}"><i class="fas fa-user"></i> Profile</a></li>
+                    <li><a href="{% url 'logout' %}"><i class="fas fa-sign-in-alt"></i> Sign Out</a></li>
+                </ul>
+            </nav>
+        </aside>
+
 {%block content%}
 {%endblock%}
 <script>

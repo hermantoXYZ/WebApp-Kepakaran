@@ -1,0 +1,59 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}List Buku{% endblock %}
+{% block content %}
+
+
+
+<div class="main-content">
+    <header class="main-header">
+        <div class="breadcrumb">
+            <span>Pages / Add Buku</span>
+            <h2>Buku</h2>
+        </div>
+        <div class="header-right">
+            <a href="{% url 'add_book' %}" class="btn-add"><i class="fas fa-plus"></i> Add Buku</a>
+            <a href="#" class="bar-icon"><i class="fas fa-bars sidebar-toggle"></i></a>
+        </div>
+    </header>
+
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Judul</th>
+                    <th>Tahun</th>
+                    <th>Penerbit</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% if book_list %}
+                {% for book in book_list %}
+                <tr>
+                    <td>{{ book.judul_book }}</td>
+                    <td>{{ book.tahun_book }}</td>
+                    <td>{{ book.penerbit }}</td>
+                    <td class="action"><a href="{% url 'edit_book' book.id %}" class="btn-edit"><i class="fas fa-pencil-alt"></i>Edit</a>
+                        <a href="{% url 'delete_book' book.id %}" class="btn-delete"
+                        onclick="return confirm('Apakah Anda yakin ingin menghapus aset ini?');">
+                        <i class="fas fa-trash"></i> Delete
+                     </a></td>
+                    
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="4">Tidak ada penelitian yang tersedia.</td>
+                </tr>
+                {% endif %}
+                
+                
+               
+                
+                
+                
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

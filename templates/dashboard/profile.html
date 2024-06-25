@@ -1,0 +1,129 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}Profil @{{ user.username }}{% endblock %}
+{% block content %}
+
+
+
+
+
+<main class="main-content">
+    <header class="main-header">
+        <div class="breadcrumb">
+            <span>Pages / Profileku</span>
+        </div>
+        <div class="header-right">
+            <a href="/" class="btn-add"><i class="fas fa-plus"></i> Undanganku</a>
+            <a href="#" class="bar-icon"><i class="fas fa-bars sidebar-toggle"></i></a>
+        </div>
+    </header>
+    
+    <section class="main-section">
+        
+    
+
+
+    <div class="profile-card">
+        <div class="profile-header">
+            <img class="profile-image" src="{{ user.image.url }}" alt="Esthera Jackson">
+            <div class="profile-details">
+                <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+                <h2>{{user.date_joined}} </h2>
+                <p>{{user.email}}</p>
+            </div>
+        </div>
+        <!-- <div class="profile-nav">
+            <button>Overview</button>
+            <button>Teams</button>
+            <button>Projects</button>
+        </div> -->
+    </div>
+
+    <div class="form-group">
+        <form method="post" action="{% url 'update_profile' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="input-group">
+                <label for="first_name">Nama Depan:</label>
+                <input type="text" id="first_name" name="first_name" value="{{ user.first_name }}" required>
+            </div>
+            <div class="input-group">
+                <label for="last_name">Nama Belakang:</label>
+                <input type="text" id="last_name" name="last_name" value="{{ user.last_name }}" required>
+            </div>
+            <div class="input-group">
+                <label for="profile_picture">Foto Profil:</label>
+                <input type="file" id="profile_picture" name="image">
+            </div>
+            <div class="input-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="{{ user.email }}" required>
+            </div>
+            <div class="input-group">
+                <label for="phone_number">Nomor Telepon:</label>
+                <input type="text" id="phone_number" name="phone_number" value="{{ user.phone_number }}" required>
+            </div>
+            <div class="input-group">
+                <button type="submit">Simpan Perubahan</button>
+            </div>
+        </form>
+    </div>
+    
+
+<!-- 
+    
+    <div class="profile-content">
+        <div class="platform-settings">
+            <h2>Platform Settings</h2>
+            <div class="settings-option">
+               {{ user.username }}
+            </div>
+            <div class="settings-option">
+                <label>
+                    <input type="checkbox"> Monthly product changes
+                </label>
+            </div>
+        </div>
+        <div class="profile-information">
+            <h2>Profile Information</h2>
+            <p>Hi, I’m Esthera Jackson, Decisions: If you can’t decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality).</p>
+            <p><strong>Location:</strong> United States</p>
+            <p><strong>Social Media:</strong> 
+                <a href="#">Facebook</a> 
+                <a href="#">Instagram</a> 
+                <a href="#">Twitter</a>
+            </p>
+        </div>
+        <div class="conversations">
+            <h2>Conversations</h2>
+            <div class="conversation">
+                <img src="user1.jpg" alt="Sophie B.">
+                <p>Sophie B.<br>Hi! I need more information...</p>
+                <button>Reply</button>
+            </div>
+            <div class="conversation">
+                <img src="user2.jpg" alt="Sophie B.">
+                <p>Sophie B.<br>About files I can...</p>
+                <button>Reply</button>
+            </div>
+        </div> -->
+ 
+
+
+<!-- 
+
+    <main>
+        <h1>Profil</h1>
+        <div class="profile-container">
+            <div class="profile-info">
+                <p><strong>Nama Depan:</strong> {{ user.first_name }}</p>
+                <p><strong>Nama Belakang:</strong> {{ user.last_name }}</p>
+                <p><strong>Username:</strong> {{ user.username }}</p>
+                <p><strong>Email:</strong> {{ user.email }}</p>
+                <p><strong>Nomor Telepon:</strong> {{ user.phone_number }}</p>
+                <p><strong>Pelangan:</strong> {{ user.is_pelanggan }}</p>
+            </div>
+        </div>
+    </main> -->
+
+ {% endblock %}
+</body>
+</html>

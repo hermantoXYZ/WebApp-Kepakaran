@@ -1,0 +1,59 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}Add Pendidikan{% endblock %}
+{% block content %}
+
+
+
+<div class="main-content">
+    <header class="main-header">
+        <div class="breadcrumb">
+            <span>Pages / Add Pendidikan</span>
+            <h2>Pendidikan</h2>
+        </div>
+        <div class="header-right">
+            <a href="{% url 'add_pendidikan' %}" class="btn-add"><i class="fas fa-plus"></i> Add Pendidikan</a>
+            <a href="#" class="bar-icon"><i class="fas fa-bars sidebar-toggle"></i></a>
+        </div>
+    </header>
+
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Universitas</th>
+                    <th>Tahun</th>
+                    <th>Progam Studi</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% if pendidikan_list %}
+                {% for pendidikan in pendidikan_list %}
+                <tr>
+                    <td>{{ pendidikan.pendidikan }}</td>
+                    <td>{{ pendidikan.tahun }}</td>
+                    <td>{{ pendidikan.program_studi }}</td>
+                    <td class="action"><a href="{% url 'edit_pendidikan' pendidikan.id %}" class="btn-edit"><i class="fas fa-pencil-alt"></i>Edit</a>
+                        <a href="{% url 'delete_pendidikan' pendidikan.id %}" class="btn-delete"
+                        onclick="return confirm('Apakah Anda yakin ingin menghapus pendidikan ini?');">
+                        <i class="fas fa-trash"></i> Delete
+                     </a></td>
+                    
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="4">Tidak ada pendidikan yang tersedia.</td>
+                </tr>
+                {% endif %}
+                
+                
+               
+                
+                
+                
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

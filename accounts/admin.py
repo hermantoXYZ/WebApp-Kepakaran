@@ -1,9 +1,12 @@
 from django.contrib import admin
 from .models import User, PostNews, Category, Page
+from tinymce.widgets import TinyMCE
+from django.db import models
+from tinymce.models import HTMLField
 
 # Register your models here.
 
-from .models import BidangKepakaran, Pakar, Pendidikan, Penelitian, InTheNews, Pengabdianan, Organisasi, Book
+from .models import BidangKepakaran, Pakar, Pendidikan, Penelitian, InTheNews, Pengabdian, Organisasi, Book
 
 # class UserProfileAdmin(admin.ModelAdmin):
 #     list_display = ('user', 'email', 'no_hp', 'social_media_ig', 'social_media_twitter', 'social_media_facebook')
@@ -35,8 +38,8 @@ class InTheNewsInline(admin.TabularInline):
     extra = 1
 
 
-class PengabdiananInline(admin.TabularInline):
-    model = Pengabdianan
+class PengabdianInline(admin.TabularInline):
+    model = Pengabdian
     extra = 1
 
 class OrganisasiInline(admin.TabularInline):
@@ -54,7 +57,7 @@ class BookInline(admin.TabularInline):
 class PakarAdmin(admin.ModelAdmin):
     list_display = ('user', 'get_bidang_kepakaran', 'biografi', 'minat_penelitian')
     search_fields = ('user__username', 'biografi', 'minat_penelitian')
-    inlines = [PendidikanInline,  PengabdiananInline, OrganisasiInline, BookInline, PenelitianInline, InTheNewsInline,]
+    inlines = [PendidikanInline,  PengabdianInline, OrganisasiInline, BookInline, PenelitianInline, InTheNewsInline,]
     filter_horizontal = ('bidang_kepakaran',)
 
     def get_bidang_kepakaran(self, obj):
@@ -87,5 +90,10 @@ class PageAdmin(admin.ModelAdmin):
     list_filter = ('author', 'created_at')
     search_fields = ('title', 'author__username')
     prepopulated_fields = {'slug': ('title',)}
+
+    formfield_overrides = {
+        models.TextField: {'widget': TinyMCE(attrs={'cols': 80, 'rows': 30})},
+        HTMLField: {'widget': TinyMCE(attrs={'cols': 80, 'rows': 30})},
+    }
 
 admin.site.register(Page , PageAdmin)

@@ -1,0 +1,55 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}Add News{% endblock %}
+{% block content %}
+
+
+
+<div class="main-content">
+    <header class="main-header">
+        <div class="breadcrumb">
+            <span>Pages / Add News</span>
+            <h2>News</h2>
+        </div>
+        <div class="header-right">
+            <a href="{% url 'add_news' %}" class="btn-add"><i class="fas fa-plus"></i> Add News</a>
+            <a href="#" class="bar-icon"><i class="fas fa-bars sidebar-toggle"></i></a>
+        </div>
+    </header>
+
+    <div class="container-ku">
+    <div class="form-container">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-section">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="{{ form_news.judul_news.id_for_label }}">Judul News</label>
+                        {{ form_news.judul_news }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form_news.tanggal_terbit.id_for_label }}">Tanggal Terbit</label>
+                        {{ form_news.tanggal_terbit }}
+                    </div>
+
+                    <!-- <div class="form-group">
+                        <label for="{{ pembelian_form.tanggal_kontrak.id_for_label }}">Tanggal Kontrak</label>
+                        {{ pembelian_form.tanggal_kontrak }}
+                    </div> -->
+
+
+                    <div class="form-group">
+                        <label for="{{ form_news.link_news.id_for_label }}">Link News</label>
+                        {{ form_news.link_news }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form_news.media.id_for_label }}">Media</label>
+                        {{ form_news.media }}
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Simpan Data</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

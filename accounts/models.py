@@ -7,6 +7,7 @@ from django.dispatch import receiver
 from datetime import datetime
 import os
 import random
+from tinymce.models import HTMLField
 
 def rename_image(instance, filename):
     upload_to = 'images/'
@@ -32,7 +33,7 @@ class User(AbstractUser):
     is_dosen = models.BooleanField('Is dosen', default=False)
     is_user = models.BooleanField('Is user', default=False)
     phone_number = models.CharField(max_length=20, blank=True, null=True)
-    adress = models.TextField(blank=True, null=True)
+    address = models.TextField(blank=True, null=True)
     birth_date = models.DateField(blank=True, null=True)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
     scopus_id = models.CharField(max_length=100, blank=True, null=True)
@@ -49,7 +50,7 @@ class Page (models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     images = models.ImageField(upload_to=rename_image, null=True, blank=True)
-    content = models.TextField()
+    content = HTMLField()
     created_at = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=200, unique=True, blank=True)
 
@@ -102,8 +103,8 @@ class BidangKepakaran(models.Model):
         return [pakar.user for pakar in self.pakar.all()]
 
 class Pakar(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     bidang_kepakaran = models.ManyToManyField(BidangKepakaran, related_name='pakar')
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
     biografi = models.TextField()
     minat_penelitian = models.TextField()
 
@@ -168,7 +169,7 @@ class InTheNews(models.Model):
     
 
 
-class Pengabdianan(models.Model):
+class Pengabdian(models.Model):
     pakar = models.ForeignKey(Pakar, on_delete=models.CASCADE, related_name='pengabdian')
     judul_pengabdian = models.CharField(max_length=200, blank=True, null=True)
     tahun_pengabdian = models.IntegerField(blank=True, null=True)
@@ -183,6 +184,7 @@ class Book (models.Model):
     judul_book = models.CharField(max_length=200, blank=True, null=True)
     tahun_book = models.IntegerField(blank=True, null=True)
     link_book = models.URLField(blank=True, null=True)
+    penerbit = models.CharField(max_length=200, blank=True, null=True)
     cover_book = models.ImageField(upload_to=rename_image, null=True, blank=True)
 
     def __str__(self):

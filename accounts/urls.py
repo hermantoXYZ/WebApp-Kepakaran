@@ -29,6 +29,39 @@ urlpatterns = [
     path('dashboard/dosen', viewsDosen.dosen, name='dashboard_dosen'),
     path('dashboard/profile/', viewsDosen.dashboard_profile, name='profile'),
     path('dashboard/profile/update', viewsDosen.update_profile, name='update_profile'),
+    #Dosen Penelitian
+    path('dashboard/dosen/penelitian', viewsDosen.penelitian, name='add_penelitian'),
+    path('dashboard/dosen/list/penelitian', viewsDosen.list_penelitian, name='list_penelitian'),
+    path('dashboard/dosen/<int:penelitian_id>/edit/', viewsDosen.edit_penelitian, name='edit_penelitian'),
+    path('dashboard/dosen/<int:penelitian_id>/delete/', viewsDosen.delete_penelitian, name='delete_penelitian'),
+    #Dosen Buku
+    path('dashboard/dosen/buku', viewsDosen.book, name='add_book'),
+    path('dashboard/dosen/list/buku', viewsDosen.list_buku, name='list_book'),
+    path('dashboard/dosen/book/<int:book_id>/edit/', viewsDosen.edit_book, name='edit_book'),
+    path('dashboard/dosen/book/<int:book_id>/delete/', viewsDosen.delete_book, name='delete_book'),
+    #Dosen News
+    path('dashboard/dosen/news', viewsDosen.news, name='add_news'),
+    path('dashboard/dosen/list/news', viewsDosen.list_news, name='list_news'),
+    path('dashboard/dosen/news/<int:news_id>/edit/', viewsDosen.edit_news, name='edit_news'),
+    path('dashboard/dosen/news/<int:news_id>/delete/', viewsDosen.delete_news, name='delete_news'),
+    #Dosen organisasi
+    path('dashboard/dosen/organisasi', viewsDosen.organisasi, name='add_organisasi'),
+    path('dashboard/dosen/list/organisasi', viewsDosen.list_organisasi, name='list_organisasi'),
+    path('dashboard/dosen/organisasi/<int:organisasi_id>/edit/', viewsDosen.edit_organisasi, name='edit_organisasi'),
+    path('dashboard/dosen/organisasi/<int:organisasi_id>/delete/', viewsDosen.delete_organisasi, name='delete_organisasi'),
+    #Dosen Pendidikan
+    path('dashboard/dosen/pendidikan', viewsDosen.pendidikan, name='add_pendidikan'),
+    path('dashboard/dosen/list/pendidikan', viewsDosen.list_pendidikan, name='list_pendidikan'),
+    path('dashboard/dosen/pendidikan/<int:pendidikan_id>/edit/', viewsDosen.edit_pendidikan, name='edit_pendidikan'),
+    path('dashboard/dosen/pendidikan/<int:pendidikan_id>/delete/', viewsDosen.delete_pendidikan, name='delete_pendidikan'),
+    #Dosen Pengabdian
+    path('dashboard/dosen/pengabdian', viewsDosen.pengabdian, name='add_pengabdian'),
+    path('dashboard/dosen/list/pengabdian', viewsDosen.list_pengabdian, name='list_pengabdian'),
+    path('dashboard/dosen/pengabdian/<int:pengabdian_id>/edit/', viewsDosen.edit_pengabdian, name='edit_pengabdian'),
+    path('dashboard/dosen/pengabdian/<int:pengabdian_id>/delete/', viewsDosen.delete_pengabdian, name='delete_pengabdian'),
+
+
+
     #Pakar
     # path('daftar-pakar/', viewsDosen.DaftarPakarView.as_view(), name='daftar_pakar'),
     path('bidang/kepakaran/', viewsDosen.BidangKepakaranView, name='bidang_kepakaran'),

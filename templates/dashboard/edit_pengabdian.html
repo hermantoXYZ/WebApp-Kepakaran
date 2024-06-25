@@ -1,0 +1,49 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}Edit Pengabdian{% endblock %}
+{% block content %}
+
+
+
+<div class="main-content">
+    <header class="main-header">
+        <div class="breadcrumb">
+            <span>Pages / Edit Pengabdian</span>
+            <h2>Pengabdian</h2>
+        </div>
+        <div class="header-right">
+            <a href="{% url 'add_pengabdian' %}" class="btn-add"><i class="fas fa-plus"></i> Add Pengabdian</a>
+            <a href="#" class="bar-icon"><i class="fas fa-bars sidebar-toggle"></i></a>
+        </div>
+    </header>
+
+    <div class="container-ku">
+    <div class="form-container">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-section">
+          
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="{{ form_pengabdian.judul_pengabdian.id_for_label }}">Judul Pengabdian</label>
+                        {{ form_pengabdian.judul_pengabdian }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form_pengabdian.tahun_pengabdian.id_for_label }}">Tahun</label>
+                        {{ form_pengabdian.tahun_pengabdian }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form_pengabdian.tim_pengabdian.id_for_label }}">Tim</label>
+                        {{ form_pengabdian.tim_pengabdian }}
+                    </div>
+                </div>
+             
+                
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Simpan Data</button>
+        </form>
+      
+    </div>
+</div>
+
+{% endblock %}

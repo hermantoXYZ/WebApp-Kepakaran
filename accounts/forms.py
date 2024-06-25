@@ -1,6 +1,42 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import User
+from .models import User, Penelitian, Book, InTheNews, Organisasi, Pendidikan, Pengabdian
+from tinymce.widgets import TinyMCE
+
+
+class PengabdianForm(forms.ModelForm):
+    class Meta:
+        model = Pengabdian
+        fields = ['judul_pengabdian', 'tahun_pengabdian', 'link_pengabdian', 'tim_pengabdian']
+
+class PendidikanForm(forms.ModelForm):
+    class Meta:
+        model = Pendidikan
+        fields = ['pendidikan', 'tahun', 'program_studi']
+
+class OrganisasiForm(forms.ModelForm):
+    class Meta:
+        model= Organisasi
+        fields = ['nama_organisasi', 'tahun_organisasi', 'jabatan_organisasi']
+
+
+class NewsForm(forms.ModelForm):
+
+    tanggal_terbit = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    class Meta:
+        model = InTheNews
+        fields = ['judul_news', 'tanggal_terbit', 'link_news', 'media']
+
+class PenelitianForm(forms.ModelForm):
+    class Meta:
+        model = Penelitian
+        fields = ['judul_penelitian', 'tahun_penelitian', 'link_penelitian', 'tim_penelitian', 'category_penelitian']
+
+
+class BookForm(forms.ModelForm):
+    class Meta:
+        model = Book
+        fields = ['judul_book', 'tahun_book', 'link_book', 'penerbit', 'cover_book']
 
 class LoginForm(forms.Form):
     username = forms.CharField(
@@ -132,3 +168,12 @@ class PasswordResetConfirmForm(forms.Form):
 
         return cleaned_data
     
+
+
+# class PageForm(forms.ModelForm):
+
+#     content = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))
+    
+#     class Meta:
+#         model = Page
+#         fields = '__all__'
