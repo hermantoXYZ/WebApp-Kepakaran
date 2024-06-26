@@ -59,7 +59,9 @@ urlpatterns = [
     path('dashboard/dosen/list/pengabdian', viewsDosen.list_pengabdian, name='list_pengabdian'),
     path('dashboard/dosen/pengabdian/<int:pengabdian_id>/edit/', viewsDosen.edit_pengabdian, name='edit_pengabdian'),
     path('dashboard/dosen/pengabdian/<int:pengabdian_id>/delete/', viewsDosen.delete_pengabdian, name='delete_pengabdian'),
-
+    #Dosen Kepakaran
+    path('dashboard/dosen/kepakaran', viewsDosen.bidang_pakar, name='add_kepakaran'),
+    path('dashboard/dosen/peminatan', viewsDosen.bidang_minat, name='add_peminatan'),
 
 
     #Pakar

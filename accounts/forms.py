@@ -1,7 +1,27 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import User, Penelitian, Book, InTheNews, Organisasi, Pendidikan, Pengabdian
+from .models import User, Penelitian, Book, InTheNews, Organisasi, Pendidikan, Pengabdian, BidangKepakaran, Pakar
 from tinymce.widgets import TinyMCE
+
+
+
+class MinatPenelitianForm(forms.ModelForm):
+    class Meta:
+        model = Pakar
+        fields = ['tags']
+        widgets = {
+            'tags': forms.TextInput(attrs={'placeholder': 'Masukkan minat penelitian, pisahkan dengan koma'}),
+        }
+
+
+class PakarForm(forms.ModelForm):
+    class Meta:
+        model = Pakar
+        fields = ['bidang_kepakaran']
+        widgets = {
+            'bidang_kepakaran': forms.CheckboxSelectMultiple,
+        }
+
 
 
 class PengabdianForm(forms.ModelForm):
@@ -140,7 +160,7 @@ class SignUpForm(UserCreationForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email', 'phone_number', 'image']
+        fields = ['first_name', 'last_name', 'email', 'phone_number', 'bio', 'image', 'scopus_id', 'sinta', 'google_scholar', 'linkedin']
 
     def clean_email(self):
         email = self.cleaned_data.get('email')

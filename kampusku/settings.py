@@ -38,9 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts.apps.AccountsConfig',
     'tinymce',
-    'accounts',
+    # 'accounts',
+    'taggit',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

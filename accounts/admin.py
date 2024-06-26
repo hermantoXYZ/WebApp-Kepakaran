@@ -55,8 +55,7 @@ class BookInline(admin.TabularInline):
 
 
 class PakarAdmin(admin.ModelAdmin):
-    list_display = ('user', 'get_bidang_kepakaran', 'biografi', 'minat_penelitian')
-    search_fields = ('user__username', 'biografi', 'minat_penelitian')
+    list_display = ('user', 'get_bidang_kepakaran')
     inlines = [PendidikanInline,  PengabdianInline, OrganisasiInline, BookInline, PenelitianInline, InTheNewsInline,]
     filter_horizontal = ('bidang_kepakaran',)
 

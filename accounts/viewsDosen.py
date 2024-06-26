@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
-from .forms import ProfileUpdateForm, PenelitianForm, BookForm, NewsForm, OrganisasiForm, PendidikanForm, PengabdianForm
+from .forms import ProfileUpdateForm, PenelitianForm, BookForm, NewsForm, OrganisasiForm, PendidikanForm, PengabdianForm, PakarForm, MinatPenelitianForm
 from django.views.generic import ListView, DetailView
 
 from .models import Pakar, BidangKepakaran, Penelitian, Book, InTheNews, Organisasi, Pendidikan, Pengabdian
@@ -12,15 +12,18 @@ from django.shortcuts import render, get_object_or_404
 def is_dosen(user):
     return user.is_authenticated and user.is_dosen
 
+@login_required
 @user_passes_test(is_dosen)
 def dosen(request):
     return render(request, 'dashboard/dosen.html')
 
+@login_required
 @user_passes_test(is_dosen)
 def dashboard_profile(request):
     user = request.user
     return render(request, 'dashboard/profile.html', {'user': user})
 
+@login_required
 @user_passes_test(lambda u: u.is_dosen)
 def penelitian(request):
     user_pakar = request.user.pakar  # Mengambil objek Pakar terkait dengan User yang sedang login
@@ -41,6 +44,7 @@ def penelitian(request):
 
     return render(request, 'dashboard/penelitian.html', context)
 
+@login_required
 @user_passes_test(lambda u: u.is_dosen)
 def edit_penelitian(request, penelitian_id):
     penelitian_instance = get_object_or_404(Penelitian, id=penelitian_id)
@@ -63,11 +67,18 @@ def edit_penelitian(request, penelitian_id):
 
     return render(request, 'dashboard/edit_penelitian.html', context)
 
+@login_required
 @user_passes_test(is_dosen)
 def list_penelitian(request):
-    penelitian_list = Penelitian.objects.all().order_by('-id')
+    try:
+        pakar = Pakar.objects.get(user=request.user)
+        penelitian_list = Penelitian.objects.filter(pakar=pakar).order_by('-id')
+        return render(request, 'dashboard/list_penelitian.html', {'penelitian_list': penelitian_list})
+    except Pakar.DoesNotExist:
+        penelitian_list = []
+    
     return render(request, 'dashboard/list_penelitian.html', {'penelitian_list': penelitian_list})
-
+@login_required
 @user_passes_test(is_dosen)
 def delete_penelitian(request, penelitian_id):
     penelitian_instance = get_object_or_404(Penelitian, id=penelitian_id)
@@ -78,7 +89,7 @@ def delete_penelitian(request, penelitian_id):
 
 
 
-
+@login_required
 @user_passes_test(lambda u: u.is_dosen)
 def book(request):
     user_pakar = request.user.pakar  # Mengambil objek Pakar terkait dengan User yang sedang login
@@ -100,13 +111,13 @@ def book(request):
     return render(request, 'dashboard/book.html', context)
 
 
-
+@login_required
 @user_passes_test(is_dosen)
 def list_buku(request):
     book_list = Book.objects.all().order_by('-id')
     return render(request, 'dashboard/list_book.html', {'book_list': book_list})
 
-
+@login_required
 @user_passes_test(lambda u: u.is_dosen)
 def edit_book(request, book_id):
     penelitian_instance = get_object_or_404(Book, id=book_id)
@@ -130,7 +141,7 @@ def edit_book(request, book_id):
     return render(request, 'dashboard/edit_book.html', context)
 
 
-
+@login_required
 @user_passes_test(is_dosen)
 def delete_book(request, book_id):
     penelitian_instance = get_object_or_404(Book, id=book_id)
@@ -140,7 +151,7 @@ def delete_book(request, book_id):
 
 
 
-
+@login_required
 @user_passes_test(lambda u: u.is_dosen)
 def news(request):
     user_pakar = request.user.pakar  # Mengambil objek Pakar terkait dengan User yang sedang login
@@ -165,19 +176,20 @@ def news(request):
 
     return render(request, 'dashboard/news.html', context)
 
+@login_required
 @user_passes_test(is_dosen)
 def delete_news(request, news_id):
     penelitian_instance = get_object_or_404(InTheNews, id=news_id)
     penelitian_instance.delete()
     return redirect('list_news')
 
-
+@login_required
 @user_passes_test(is_dosen)
 def list_news(request):
     news_list = InTheNews.objects.all().order_by('-id')
     return render(request, 'dashboard/list_news.html', {'news_list': news_list})
 
-
+@login_required
 @user_passes_test(lambda u: u.is_dosen)
 def edit_news(request, news_id):
     penelitian_instance = get_object_or_404(InTheNews, id=news_id)
@@ -203,7 +215,7 @@ def edit_news(request, news_id):
 
 
 
-
+@login_required
 @user_passes_test(lambda u: u.is_dosen)
 def organisasi(request):
     user_pakar = request.user.pakar  # Mengambil objek Pakar terkait dengan User yang sedang login
@@ -228,6 +240,8 @@ def organisasi(request):
 
     return render(request, 'dashboard/organisasi.html', context)
 
+
+@login_required
 @user_passes_test(lambda u: u.is_dosen)
 def edit_organisasi(request, organisasi_id):
     penelitian_instance = get_object_or_404(Organisasi, id=organisasi_id)
@@ -250,11 +264,13 @@ def edit_organisasi(request, organisasi_id):
 
     return render(request, 'dashboard/edit_organisasi.html', context)
 
+@login_required
 @user_passes_test(is_dosen)
 def list_organisasi(request):
     organisasi_list = Organisasi.objects.all().order_by('-id')
     return render(request, 'dashboard/list_organisasi.html', {'organisasi_list': organisasi_list})
 
+@login_required
 @user_passes_test(is_dosen)
 def delete_organisasi(request, organisasi_id):
     penelitian_instance = get_object_or_404(Organisasi, id=organisasi_id)
@@ -263,7 +279,7 @@ def delete_organisasi(request, organisasi_id):
 
 
 
-
+@login_required
 @user_passes_test(lambda u: u.is_dosen)
 def pendidikan(request):
     user_pakar = request.user.pakar
@@ -286,6 +302,7 @@ def pendidikan(request):
     return render(request, 'dashboard/pendidikan.html', context)
 
 
+@login_required
 @user_passes_test(lambda u: u.is_dosen)
 def edit_pendidikan(request, pendidikan_id):
     penelitian_instance = get_object_or_404(Pendidikan, id=pendidikan_id)
@@ -309,18 +326,20 @@ def edit_pendidikan(request, pendidikan_id):
 
     return render(request, 'dashboard/edit_pendidikan.html', context)
 
+@login_required
 @user_passes_test(is_dosen)
 def list_pendidikan(request):
     pendidikan_list = Pendidikan.objects.all().order_by('-id')
     return render(request, 'dashboard/list_pendidikan.html', {'pendidikan_list': pendidikan_list})
 
+@login_required
 @user_passes_test(is_dosen)
 def delete_pendidikan(request, pendidikan_id):
     penelitian_instance = get_object_or_404(Pendidikan, id=pendidikan_id)
     penelitian_instance.delete()
     return redirect('list_pendidikan')
 
-
+@login_required
 @user_passes_test(lambda u: u.is_dosen)
 def pengabdian(request):
     user_pakar = request.user.pakar
@@ -344,19 +363,21 @@ def pengabdian(request):
 
     return render(request, 'dashboard/pengabdian.html', context)
 
-
+@login_required
 @user_passes_test(is_dosen)
 def list_pengabdian(request):
     pengabdian_list = Pengabdian.objects.all().order_by('-id').order_by('-id')
     return render(request, 'dashboard/list_pengabdian.html', {'pengabdian_list': pengabdian_list})
 
-
+@login_required
 @user_passes_test(is_dosen)
 def delete_pengabdian(request, pengabdian_id):
     penelitian_instance = get_object_or_404(Pengabdian, id=pengabdian_id)
     penelitian_instance.delete()
     return redirect('list_pengabdian')
 
+
+@login_required
 @user_passes_test(lambda u: u.is_dosen)
 def edit_pengabdian(request, pengabdian_id):
     penelitian_instance = get_object_or_404(Pengabdian, id=pengabdian_id)
@@ -382,14 +403,41 @@ def edit_pengabdian(request, pengabdian_id):
 
     return render(request, 'dashboard/edit_pengabdian.html', context)   
 
+@login_required
+@user_passes_test(is_dosen)
+@login_required
+def bidang_pakar (request):
+    dosen = request.user.pakar
+    if request.method == 'POST':
+        form = PakarForm(request.POST, instance=dosen)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard_dosen')  # Ganti dengan nama rute dashboard dosen Anda
+    else:
+        form = PakarForm(instance=dosen)
+    
+    return render(request, 'dashboard/bidang_kepakaran.html', {'form': form})
 
+@user_passes_test(is_dosen)
+@login_required
+def bidang_minat(request):
+    try:
+        pakar_instance = Pakar.objects.get(user=request.user)
+    except Pakar.DoesNotExist:
+        pakar_instance = None
 
+    if request.method == 'POST':
+        form = MinatPenelitianForm(request.POST, instance=pakar_instance)
+        if form.is_valid():
+            pakar_instance = form.save(commit=False)
+            pakar_instance.user = request.user
+            pakar_instance.save()
+            form.save_m2m()
+            return redirect('dashboard_dosen')  # Ganti 'success_url' dengan URL yang sesuai
+    else:
+        form = MinatPenelitianForm(instance=pakar_instance)
 
-
-
-
-
-
+    return render(request, 'dashboard/bidang_peminatan.html', {'form': form})
 
 
 
@@ -399,7 +447,7 @@ def update_profile(request):
         form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
             form.save()
-            return redirect('profile')
+            return redirect('dashboard_dosen')
     else:
         form = ProfileUpdateForm(instance=request.user)
     return render(request, 'dashboard/profile.html', {'form': form})
@@ -418,6 +466,7 @@ class DetailPakarView(DetailView):
 
     def get_object(self):
         return Pakar.objects.get(user__username=self.kwargs.get('slug'))
+        
 
 
 def BidangKepakaranView(request):
@@ -445,4 +494,5 @@ class DetailPakarView(DetailView):
         pakar = self.get_object()
         # Tambahkan informasi pengguna ke konteks
         context['user'] = pakar.user
+        context['tags'] = pakar.tags.all()
         return context

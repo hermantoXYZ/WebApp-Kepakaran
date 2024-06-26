@@ -8,6 +8,7 @@ from datetime import datetime
 import os
 import random
 from tinymce.models import HTMLField
+from taggit.managers import TaggableManager
 
 def rename_image(instance, filename):
     upload_to = 'images/'
@@ -35,6 +36,7 @@ class User(AbstractUser):
     phone_number = models.CharField(max_length=20, blank=True, null=True)
     address = models.TextField(blank=True, null=True)
     birth_date = models.DateField(blank=True, null=True)
+    bio = models.TextField(blank=True, null=True)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
     scopus_id = models.CharField(max_length=100, blank=True, null=True)
     sinta = models.CharField(max_length=100, blank=True, null=True)
@@ -85,7 +87,7 @@ class PostNews(models.Model):
 def pre_save_postnews_receiver(sender, instance, **kwargs):
     if not instance.slug:
         instance.slug = slugify(instance.title)
-
+    
 
 class BidangKepakaran(models.Model):
     nama_bidang = models.CharField(max_length=100)
@@ -101,12 +103,14 @@ class BidangKepakaran(models.Model):
     
     def get_users(self):
         return [pakar.user for pakar in self.pakar.all()]
+    
+    
 
 class Pakar(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bidang_kepakaran = models.ManyToManyField(BidangKepakaran, related_name='pakar')
-    biografi = models.TextField()
-    minat_penelitian = models.TextField()
+    tags = TaggableManager()
+    
 
     def __str__(self):
         return self.user.username
@@ -199,3 +203,5 @@ class Organisasi(models.Model):
 
     def __str__(self):
         return self.nama_organisasi
+    
+

@@ -1,0 +1,40 @@
+
+{% extends 'dashboard/base.html' %}
+{% block title %}Bidang Kepakaran{% endblock %}
+{% block content %}
+
+
+
+<div class="main-content">
+    <header class="main-header">
+        <div class="breadcrumb">
+            <span>Pages / Bidang Kepakaran</span>
+            <h2>Kepakaran</h2>
+        </div>
+        <div class="header-right">
+            <a href="{% url 'add_pengabdian' %}" class="btn-add"><i class="fas fa-plus"></i> Bidang Kepakaran</a>
+            <a href="#" class="bar-icon"><i class="fas fa-bars sidebar-toggle"></i></a>
+        </div>
+    </header>
+
+    <div class="container-ku">
+    <div class="form-container">
+        <form method="post">
+            {% csrf_token %}
+            
+            <div>
+                <label for="{{ form.tags.id_for_label }}">Tags:</label>
+                {{ form.tags }}
+                {% if form.tags.errors %}
+                    <div class="error">
+                        {{ form.tags.errors }}
+                    </div>
+                {% endif %}
+            </div>
+            
+            <button type="submit">Simpan</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

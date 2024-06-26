@@ -21,23 +21,19 @@
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-section">
-               
+          
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="{{ form_book.judul_book.id_for_label }}">Judul Buku</label>
-                        {{ form_book.judul_book }}
+                        <label for="{{ form_pengabdian.judul_pengabdian.id_for_label }}">Judul Pengabdian</label>
+                        {{ form_pengabdian.judul_pengabdian }}
                     </div>
                     <div class="form-group">
-                        <label for="{{ form_book.tahun_book.id_for_label }}">Tahun</label>
-                        {{ form_book.tahun_book }}
+                        <label for="{{ form_pengabdian.tahun_pengabdian.id_for_label }}">Tahun</label>
+                        {{ form_pengabdian.tahun_pengabdian }}
                     </div>
                     <div class="form-group">
-                        <label for="{{ form_book.link_book.id_for_label }}">Link Buku</label>
-                        {{ form_book.link_book }}
-                    </div>
-                    <div class="form-group">
-                        <label for="{{ form_book.penerbit.id_for_label }}">Penerbit Buku</label>
-                        {{ form_book.penerbit }}
+                        <label for="{{ form_pengabdian.tim_pengabdian.id_for_label }}">Tim</label>
+                        {{ form_pengabdian.tim_pengabdian }}
                     </div>
                 </div>
              

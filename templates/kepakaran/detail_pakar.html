@@ -72,7 +72,7 @@
                             <h2 class="title position-relative pb-2 mb-4">Biografi</h2>
                         </div>
                         <div class="col-12">
-                            <p>{{ pakar.biografi }}</p>
+                            <p>{{ user.bio }}</p>
                             <div class="row">
                                 <div class="col-sm-6 py-1">
                                     <h5 class="d-inline text-primary">Name:</h5> {{ user.first_name }}
@@ -87,7 +87,7 @@
                                     <h5 class="d-inline text-primary">Email:</h5> {{ user.email }}
                                 </div>
                                 <div class="col-sm-6 py-1">
-                                    <h5 class="d-inline text-primary">Address:</h5>{{ user.adress }}
+                                    <h5 class="d-inline text-primary">Address:</h5>{{ user.address }}
                                 </div>
                                 <div class="col-sm-6 py-1">
                                     <h5 class="d-inline text-primary">Last Login:</h5> {{ user.last_login }}
@@ -98,8 +98,17 @@
                     </div>
                 </div>
                 <!-- About End -->
+                
 
-               
+                {% if tags %}
+        <ul>
+            {% for tag in tags %}
+                <li>{{ tag.name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Belum ada minat penelitian yang ditambahkan.</p>
+    {% endif %}
 
 
                     <div class="container bg-white py-5">
