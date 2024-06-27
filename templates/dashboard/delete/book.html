@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konfirmasi Penghapusan Buku</title>
+    <style>
+        /* CSS untuk styling popup */
+        .popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-confirm {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        .btn-cancel {
+            background-color: #6c757d;
+            color: #fff;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <h1>Konfirmasi Penghapusan Buku</h1>
+        <p>Apakah Anda yakin ingin menghapus buku "{{ book_instance.judul_book }}"?</p>
+        
+        <div class="btn-container">
+            <form method="post" action="{% url 'delete_book' book_instance.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn-confirm">Ya, Hapus</button>
+            </form>
+            <button type="button" onclick="closePopup()" class="btn-cancel">Batalkan</button>
+        </div>
+    </div>
+
+    <script>
+        function openPopup() {
+            document.getElementById("overlay").style.display = "block";
+            document.getElementById("popup").style.display = "block";
+        }
+
+        function closePopup() {
+            window.location.href = '{% url "list_book" %}';
+        }
+
+        // Panggil openPopup() jika ingin memunculkan popup secara otomatis
+        openPopup(); // Memanggil fungsi openPopup saat halaman dimuat
+    </script>
+</body>
+</html>

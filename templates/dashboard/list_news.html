@@ -35,8 +35,7 @@
                     <td>{{ news.tanggal_terbit }}</td>
                     <td>{{ news.media }}</td>
                     <td class="action"><a href="{% url 'edit_news' news.id %}" class="btn-edit"><i class="fas fa-pencil-alt"></i>Edit</a>
-                        <a href="{% url 'delete_news' news.id %}" class="btn-delete"
-                        onclick="return confirm('Apakah Anda yakin ingin menghapus News ini?');">
+                        <a href="{% url 'delete_news' news.id %}" class="btn-delete">
                         <i class="fas fa-trash"></i> Delete
                      </a></td>
                     

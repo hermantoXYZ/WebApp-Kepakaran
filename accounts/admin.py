@@ -6,7 +6,7 @@ from tinymce.models import HTMLField
 
 # Register your models here.
 
-from .models import BidangKepakaran, Pakar, Pendidikan, Penelitian, InTheNews, Pengabdian, Organisasi, Book
+from .models import BidangKepakaran, Pakar, Pendidikan, Penelitian, InTheNews, Pengabdian, Organisasi, Book, ProgramStudi
 
 # class UserProfileAdmin(admin.ModelAdmin):
 #     list_display = ('user', 'email', 'no_hp', 'social_media_ig', 'social_media_twitter', 'social_media_facebook')
@@ -67,6 +67,7 @@ class PakarAdmin(admin.ModelAdmin):
 
 admin.site.register(BidangKepakaran, BidangKepakaranAdmin)
 admin.site.register(Pakar, PakarAdmin)
+admin.site.register(ProgramStudi)
 
 admin.site.register(User)
 # class PostNewsAdmin Content

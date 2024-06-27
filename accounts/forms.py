@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import User, Penelitian, Book, InTheNews, Organisasi, Pendidikan, Pengabdian, BidangKepakaran, Pakar
 from tinymce.widgets import TinyMCE
+from taggit.forms import TagWidget
 
 
 
@@ -10,14 +11,14 @@ class MinatPenelitianForm(forms.ModelForm):
         model = Pakar
         fields = ['tags']
         widgets = {
-            'tags': forms.TextInput(attrs={'placeholder': 'Masukkan minat penelitian, pisahkan dengan koma'}),
+            'tags': TagWidget(attrs={'placeholder': 'Masukkan minat penelitian, pisahkan dengan koma'}),
         }
 
 
 class PakarForm(forms.ModelForm):
     class Meta:
         model = Pakar
-        fields = ['bidang_kepakaran']
+        fields = ['bidang_kepakaran', 'program_studi']
         widgets = {
             'bidang_kepakaran': forms.CheckboxSelectMultiple,
         }

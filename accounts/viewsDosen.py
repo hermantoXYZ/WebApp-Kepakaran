@@ -1,12 +1,13 @@
 from django.contrib.auth.decorators import user_passes_test
+from django.http import HttpResponseForbidden
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from .forms import ProfileUpdateForm, PenelitianForm, BookForm, NewsForm, OrganisasiForm, PendidikanForm, PengabdianForm, PakarForm, MinatPenelitianForm
 from django.views.generic import ListView, DetailView
 
-from .models import Pakar, BidangKepakaran, Penelitian, Book, InTheNews, Organisasi, Pendidikan, Pengabdian
+from .models import Pakar, BidangKepakaran, Penelitian, Book, InTheNews, Organisasi, Pendidikan, Pengabdian, ProgramStudi
 from django.shortcuts import render, get_object_or_404
-
+from taggit.models import Tag
 
 
 def is_dosen(user):
@@ -69,24 +70,26 @@ def edit_penelitian(request, penelitian_id):
 
 @login_required
 @user_passes_test(is_dosen)
+
+
 def list_penelitian(request):
-    try:
-        pakar = Pakar.objects.get(user=request.user)
-        penelitian_list = Penelitian.objects.filter(pakar=pakar).order_by('-id')
-        return render(request, 'dashboard/list_penelitian.html', {'penelitian_list': penelitian_list})
-    except Pakar.DoesNotExist:
-        penelitian_list = []
-    
+    pakar = get_object_or_404(Pakar, user=request.user)
+    penelitian_list = Penelitian.objects.filter(pakar=pakar).order_by('-id')
     return render(request, 'dashboard/list_penelitian.html', {'penelitian_list': penelitian_list})
+
+
 @login_required
 @user_passes_test(is_dosen)
 def delete_penelitian(request, penelitian_id):
     penelitian_instance = get_object_or_404(Penelitian, id=penelitian_id)
-    penelitian_instance.delete()
-    return redirect('list_penelitian')
-
-
-
+    if penelitian_instance.pakar.user == request.user:
+        if request.method == 'POST':
+            penelitian_instance.delete()
+            return redirect('list_penelitian')
+        else:
+            return render(request, 'dashboard/delete/penelitian.html', {'penelitian_instance': penelitian_instance})
+    else:
+        return HttpResponseForbidden("You are not allowed to delete this object.")
 
 
 @login_required
@@ -114,8 +117,13 @@ def book(request):
 @login_required
 @user_passes_test(is_dosen)
 def list_buku(request):
-    book_list = Book.objects.all().order_by('-id')
+    pakar = get_object_or_404(Pakar, user=request.user)
+    book_list = Book.objects.filter(pakar=pakar).order_by('-id')
     return render(request, 'dashboard/list_book.html', {'book_list': book_list})
+
+
+
+
 
 @login_required
 @user_passes_test(lambda u: u.is_dosen)
@@ -144,11 +152,16 @@ def edit_book(request, book_id):
 @login_required
 @user_passes_test(is_dosen)
 def delete_book(request, book_id):
-    penelitian_instance = get_object_or_404(Book, id=book_id)
-    penelitian_instance.delete()
-    return redirect('list_book')
-
-
+    book_instance = get_object_or_404(Book, id=book_id)
+    if book_instance.pakar.user == request.user:
+        if request.method == 'POST':
+            book_instance.delete()
+            return redirect('list_book')
+        else:
+            return render(request, 'dashboard/delete/book.html', {'book_instance': book_instance})
+    else:
+        return HttpResponseForbidden("You are not allowed to delete this object.")
+    
 
 
 @login_required
@@ -179,15 +192,28 @@ def news(request):
 @login_required
 @user_passes_test(is_dosen)
 def delete_news(request, news_id):
-    penelitian_instance = get_object_or_404(InTheNews, id=news_id)
-    penelitian_instance.delete()
-    return redirect('list_news')
+    news_instance = get_object_or_404(InTheNews, id=news_id)
+    if news_instance.pakar.user == request.user:
+        if request.method == 'POST':
+            news_instance.delete()
+            return redirect('list_news')
+        else:
+            return render(request, 'dashboard/delete/news.html', {'news_instance': news_instance})
+    else:
+        return HttpResponseForbidden("You are not allowed to delete this object.")
 
 @login_required
 @user_passes_test(is_dosen)
 def list_news(request):
-    news_list = InTheNews.objects.all().order_by('-id')
+    pakar = get_object_or_404(Pakar, user=request.user)
+    news_list = InTheNews.objects.filter(pakar=pakar).order_by('-id')
+    # news_list = InTheNews.objects.all().order_by('-id')
     return render(request, 'dashboard/list_news.html', {'news_list': news_list})
+
+
+
+
+
 
 @login_required
 @user_passes_test(lambda u: u.is_dosen)
@@ -267,17 +293,24 @@ def edit_organisasi(request, organisasi_id):
 @login_required
 @user_passes_test(is_dosen)
 def list_organisasi(request):
-    organisasi_list = Organisasi.objects.all().order_by('-id')
+    pakar = get_object_or_404(Pakar, user=request.user)
+    organisasi_list = Organisasi.objects.filter(pakar=pakar).order_by('-id')
+    # organisasi_list = Organisasi.objects.all().order_by('-id')
     return render(request, 'dashboard/list_organisasi.html', {'organisasi_list': organisasi_list})
 
 @login_required
 @user_passes_test(is_dosen)
 def delete_organisasi(request, organisasi_id):
-    penelitian_instance = get_object_or_404(Organisasi, id=organisasi_id)
-    penelitian_instance.delete()
-    return redirect('list_organisasi')
 
-
+    organisasi_instance = get_object_or_404(Organisasi, id=organisasi_id)
+    if organisasi_instance.pakar.user == request.user:
+        if request.method == 'POST':
+            organisasi_instance.delete()
+            return redirect('list_organisasi')
+        else:
+            return render(request, 'dashboard/delete/organisasi.html', {'organisasi_instance': organisasi_instance})
+    else:
+        return HttpResponseForbidden("You are not allowed to delete this object.")
 
 @login_required
 @user_passes_test(lambda u: u.is_dosen)
@@ -329,15 +362,25 @@ def edit_pendidikan(request, pendidikan_id):
 @login_required
 @user_passes_test(is_dosen)
 def list_pendidikan(request):
-    pendidikan_list = Pendidikan.objects.all().order_by('-id')
+    pakar = get_object_or_404(Pakar, user=request.user)
+    pendidikan_list = Pendidikan.objects.filter(pakar=pakar).order_by('-id')
+    # pendidikan_list = Pendidikan.objects.all().order_by('-id')
     return render(request, 'dashboard/list_pendidikan.html', {'pendidikan_list': pendidikan_list})
 
 @login_required
 @user_passes_test(is_dosen)
 def delete_pendidikan(request, pendidikan_id):
-    penelitian_instance = get_object_or_404(Pendidikan, id=pendidikan_id)
-    penelitian_instance.delete()
-    return redirect('list_pendidikan')
+    pendidikan_instance = get_object_or_404(Pendidikan, id=pendidikan_id)
+    if pendidikan_instance.pakar.user == request.user:
+        if request.method == 'POST':
+            pendidikan_instance.delete()
+            return redirect('list_pendidikan')
+        else:
+            return render(request, 'dashboard/delete/pendidikan.html', {'pendidikan_instance': pendidikan_instance})
+    else:
+        return HttpResponseForbidden("You are not allowed to delete this object.")
+
+
 
 @login_required
 @user_passes_test(lambda u: u.is_dosen)
@@ -366,15 +409,25 @@ def pengabdian(request):
 @login_required
 @user_passes_test(is_dosen)
 def list_pengabdian(request):
-    pengabdian_list = Pengabdian.objects.all().order_by('-id').order_by('-id')
+    pakar = get_object_or_404(Pakar, user=request.user)
+    pengabdian_list = Pengabdian.objects.filter(pakar=pakar).order_by('-id')
+    # pengabdian_list = Pengabdian.objects.all().order_by('-id').order_by('-id')
     return render(request, 'dashboard/list_pengabdian.html', {'pengabdian_list': pengabdian_list})
 
 @login_required
 @user_passes_test(is_dosen)
 def delete_pengabdian(request, pengabdian_id):
-    penelitian_instance = get_object_or_404(Pengabdian, id=pengabdian_id)
-    penelitian_instance.delete()
-    return redirect('list_pengabdian')
+
+    pengabdian_instance = get_object_or_404(Pengabdian, id=pengabdian_id)
+    if pengabdian_instance.pakar.user == request.user:
+        if request.method == 'POST':
+            pengabdian_instance.delete()
+            return redirect('list_pengabdian')
+        else:
+            return render(request, 'dashboard/delete/pengabdian.html', {'pengabdian_instance': pengabdian_instance})
+    else:
+        return HttpResponseForbidden("You are not allowed to delete this object.")
+    
 
 
 @login_required
@@ -424,7 +477,7 @@ def bidang_minat(request):
     try:
         pakar_instance = Pakar.objects.get(user=request.user)
     except Pakar.DoesNotExist:
-        pakar_instance = None
+        pakar_instance = Pakar(user=request.user)
 
     if request.method == 'POST':
         form = MinatPenelitianForm(request.POST, instance=pakar_instance)
@@ -433,12 +486,11 @@ def bidang_minat(request):
             pakar_instance.user = request.user
             pakar_instance.save()
             form.save_m2m()
-            return redirect('dashboard_dosen')  # Ganti 'success_url' dengan URL yang sesuai
+            return redirect('dashboard_dosen')  # Ganti 'dashboard_dosen' dengan URL yang sesuai
     else:
         form = MinatPenelitianForm(instance=pakar_instance)
 
     return render(request, 'dashboard/bidang_peminatan.html', {'form': form})
-
 
 
 @login_required
@@ -471,13 +523,27 @@ class DetailPakarView(DetailView):
 
 def BidangKepakaranView(request):
     bidang_list = BidangKepakaran.objects.all()
-    return render(request, 'kepakaran/bidang_kepakaran_list.html', {'bidang_list': bidang_list})
+    program_studi = ProgramStudi.objects.all()
+    tags = Tag.objects.all()
+
+    context = {
+        'bidang_list': bidang_list,
+        'tags': tags,
+        'program_studi': program_studi
+    }
+    return render(request, 'kepakaran/bidang_kepakaran_list.html', context)
 
 
 def bidang_kepakaran_detail(request, slug):
     bidang = get_object_or_404(BidangKepakaran, slug=slug)
     users = bidang.get_users()
     return render(request, 'kepakaran/bidang_kepakaran_detail.html', {'bidang': bidang, 'users': users})
+
+def program_studi_detail (request, slug):
+    program_studi = get_object_or_404(ProgramStudi, slug=slug)
+    users = program_studi.get_users()
+    return render(request, 'kepakaran/program_studi_detail.html', {'program_studi': program_studi, 'users': users})
+
 
 class DetailPakarView(DetailView):
     model = Pakar
@@ -496,3 +562,8 @@ class DetailPakarView(DetailView):
         context['user'] = pakar.user
         context['tags'] = pakar.tags.all()
         return context
+    
+def users_by_tag(request, tag_slug):
+    tag = get_object_or_404(Tag, slug=tag_slug)
+    users = Pakar.objects.filter(tags__name__in=[tag.name])
+    return render(request, 'kepakaran/users_by_tag.html', {'tag': tag, 'users': users})

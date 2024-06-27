@@ -9,7 +9,7 @@
     <div class="container py-5">
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
             <h4 class="text-primary">FEB UNM</h4>
-            <h1 class="display-4 mb-4">BIDANG KEPAKARAN</h1>
+            <h1 class="display-4 mb-4">BIDANG KEPAKARAN UNM</h1>
             <p class="mb-0">Menjadi pusat pendidikan ekonomi dan bisnis yang berdaya saing global dengan berwawasan kependidikan dan kewirausahaan pada tahun 2030
             </p>
         </div>
@@ -29,7 +29,55 @@
             </div>
             {% endfor %}
             
-          
+        </div>
+        
+      
+
+        <div class="row g-4 mt-2 g-4">
+                <!-- Program Studi -->
+                {% for program in program_studi %}
+                
+                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
+                <div class="program-card">
+                    
+                    <div class="program-details">
+                        <a href="{% url 'program_studi_detail' slug=program.slug %}" class="program-name">{{ program.nama_program }}</a>
+                        <div class="program-members">16 Members</div>
+                    </div>
+                </div>
+                </div>
+                {% endfor %}
+         
+
+            </div>
+
+            <div class="row g-4 mt-2 g-4">
+                <div class="text-center mx-auto pb-1 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px; visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <h1 class="display-4 mb-4">Minat Penelitian</h1>
+                    <p class="mb-0">Di bawah ini merupakan minat penelitian yang ditambahkan oleh para pakar.
+                    </p>
+                </div></div>
+         
+
+                <div class="row g-4 mt-2 g-4">
+                {% for tag in tags %}
+
+
+
+                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="program-card-tag">
+                        
+                        <div class="program-details-tag">
+                            <a href="{% url 'users_by_tag' tag.slug %}" class="program-name-tag">#{{ tag.name }}</a>
+        
+                        </div>
+                    </div>
+                    </div>
+
+
+                 
+                {% endfor %}
+              
         </div>
     </div>
 </div>

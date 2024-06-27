@@ -87,6 +87,21 @@ class PostNews(models.Model):
 def pre_save_postnews_receiver(sender, instance, **kwargs):
     if not instance.slug:
         instance.slug = slugify(instance.title)
+
+class ProgramStudi(models.Model):
+    nama_program = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=100, unique=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.nama_program)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.nama_program
+    
+    def get_users(self):
+        return [pakar.user for pakar in self.pakar.all()]
     
 
 class BidangKepakaran(models.Model):
@@ -109,6 +124,7 @@ class BidangKepakaran(models.Model):
 class Pakar(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bidang_kepakaran = models.ManyToManyField(BidangKepakaran, related_name='pakar')
+    program_studi = models.ForeignKey(ProgramStudi, on_delete=models.SET_NULL, null=True, related_name='pakar')
     tags = TaggableManager()
     
 

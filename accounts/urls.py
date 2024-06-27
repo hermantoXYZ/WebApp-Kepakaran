@@ -67,7 +67,9 @@ urlpatterns = [
     #Pakar
     # path('daftar-pakar/', viewsDosen.DaftarPakarView.as_view(), name='daftar_pakar'),
     path('bidang/kepakaran/', viewsDosen.BidangKepakaranView, name='bidang_kepakaran'),
+    path('tags/<slug:tag_slug>/', viewsDosen.users_by_tag, name='users_by_tag'),
     path('pakar/<slug:slug>/', viewsDosen.DetailPakarView.as_view(), name='detail_pakar'),
     path('bidang/kepakaran/<slug:slug>/', viewsDosen.bidang_kepakaran_detail, name='bidang_kepakaran_detail'),
+    path('bidang/program-studi/<slug:slug>/', viewsDosen.program_studi_detail, name='program_studi_detail'),
 ]
 

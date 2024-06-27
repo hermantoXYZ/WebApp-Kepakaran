@@ -35,8 +35,7 @@
                     <td>{{ pendidikan.tahun }}</td>
                     <td>{{ pendidikan.program_studi }}</td>
                     <td class="action"><a href="{% url 'edit_pendidikan' pendidikan.id %}" class="btn-edit"><i class="fas fa-pencil-alt"></i>Edit</a>
-                        <a href="{% url 'delete_pendidikan' pendidikan.id %}" class="btn-delete"
-                        onclick="return confirm('Apakah Anda yakin ingin menghapus pendidikan ini?');">
+                        <a href="{% url 'delete_pendidikan' pendidikan.id %}" class="btn-delete">
                         <i class="fas fa-trash"></i> Delete
                      </a></td>
                     

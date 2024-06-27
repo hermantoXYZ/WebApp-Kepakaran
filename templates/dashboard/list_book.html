@@ -35,8 +35,7 @@
                     <td>{{ book.tahun_book }}</td>
                     <td>{{ book.penerbit }}</td>
                     <td class="action"><a href="{% url 'edit_book' book.id %}" class="btn-edit"><i class="fas fa-pencil-alt"></i>Edit</a>
-                        <a href="{% url 'delete_book' book.id %}" class="btn-delete"
-                        onclick="return confirm('Apakah Anda yakin ingin menghapus aset ini?');">
+                        <a href="{% url 'delete_book' book.id %}" class="btn-delete">
                         <i class="fas fa-trash"></i> Delete
                      </a></td>
                     

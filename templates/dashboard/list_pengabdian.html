@@ -35,8 +35,7 @@
                     <td>{{ pengabdian.tahun_pengabdian }}</td>
                     <td>{{ pengabdian.tim_pengabdian }}</td>
                     <td class="action"><a href="{% url 'edit_pengabdian' pengabdian.id %}" class="btn-edit"><i class="fas fa-pencil-alt"></i>Edit</a>
-                        <a href="{% url 'delete_pengabdian' pengabdian.id %}" class="btn-delete"
-                        onclick="return confirm('Apakah Anda yakin ingin menghapus Pengabdian ini?');">
+                        <a href="{% url 'delete_pengabdian' pengabdian.id %}" class="btn-delete">
                         <i class="fas fa-trash"></i> Delete
                      </a></td>
                     
