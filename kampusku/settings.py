@@ -16,6 +16,9 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# # Static files (CSS, JavaScript, Images)
+# STATIC_URL = '/static/'
+# STATIC_ROOT = '/home/bisdigun/kampusku/static/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -27,6 +30,7 @@ SECRET_KEY = 'django-insecure-&)4d4inaf-7u$(e909*@*fg@_z9%oggze4b2jnhto8x6k-=z!4
 DEBUG = True
 
 ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'www.web.bisdigunm.com', 'web.bisdigunm.com']
 
 
 # Application definition
