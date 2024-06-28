@@ -1,13 +1,72 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Akun Belum Diverifikasi</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 40px 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        .container h1 {
+            color: #333333;
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+        .container p {
+            color: #555555;
+            font-size: 16px;
+            margin-bottom: 24px;
+        }
+        .container a {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #000000;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .container a:hover {
+            background-color: #0056b3;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px 10px;
+            }
+            .container h1 {
+                font-size: 20px;
+            }
+            .container p {
+                font-size: 14px;
+            }
+            .container a {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>THIS IS DASHBOAR USER</h1>
-
-    <a href="{% url 'logout' %}">Logout</a>
-
+    <div class="container">
+        <h1>Akun Belum Diverifikasi</h1>
+        <p>Maaf, akun Anda belum diverifikasi. Silakan periksa email Anda untuk instruksi verifikasi atau hubungi dukungan jika Anda memerlukan bantuan lebih lanjut.</p>
+        <a href="/">Hubungi Admin +6281343803141</a>
+    </div>
 </body>
 </html>

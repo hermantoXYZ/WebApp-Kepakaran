@@ -136,6 +136,8 @@
                                     <p class="mb-2">{{pendidikan.program_studi}} | <small>{{ pendidikan.tahun }}</small></p>
                                     
                                 </div>
+                                {% empty %}
+                                <p>Pakar belum mengisi data pendidikan</p>
                                 {% endfor %}
 
                             </div>
@@ -163,7 +165,10 @@
                                     <p class="mb-2">{{ organisasi.jabatan_organisasi }} | <small>{{ organisasi.tahun_organisasi }}</small></p>
                                     <!-- <p>Tempor eos dolore amet tempor dolor tempor. Dolore ea magna sit amet dolor eirmod. Eos ipsum est tempor dolor. Clita lorem kasd sed ea lorem diam ea lorem eirmod duo sit ipsum stet lorem diam</p> -->
                                 </div>
+                                {% empty %}
+                                <p>Pakar belum mengisi data pendidikan</p>
                                 {% endfor %}
+
 
                             </div>
                         </div>
@@ -192,6 +197,8 @@
                                     <p class="mb-2">{{ penelitian.tim_penelitian }} | <small>{{ penelitian.tahun_penelitian }}</small></p>
                                     <p>{{ penelitian.deskripsi_penelitian }}</p>
                                 </div>
+                                {% empty %}
+                                <p>Pakar belum mengisi data penelitian</p>
                                 {% endfor %}
 
                             </div>
@@ -287,6 +294,8 @@
                                     <p class="mb-2">{{ book.tahun_book }} | {{ book.penerbit }}
                                     </p>
                                 </div>
+                                {% empty %}
+                                <p>Pakar belum mengisi data buku</p>
                                 {% endfor %}
 
                             </div>
@@ -327,9 +336,9 @@
                             <h5 class="mb-2">{{ bidang.nama_bidang }}</h5>
                             <!-- <p>Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem lorem lorem est amet labore</p> -->
                         </div>
+                        {% empty %}
+                        <p>Pakar belum mengisi data bidang kepakaran</p>
                         {% endfor %}
-                     
-                    
                     </div>
                 </div>
                 <!-- Services End -->
@@ -350,6 +359,8 @@
                                     <p class="mb-2">{{ pengabdian.tim_pengabdian }} | <small>{{ pengabdian.tahun_pengabdian }}</small></p>
                                     <!-- <p>{{ penelitian.deskripsi_penelitian }}</p> -->
                                 </div>
+                                {% empty %}
+                                <p>Pakar belum mengisi data pengabdian</p>
                                 {% endfor %}
 
                             </div>
@@ -380,6 +391,8 @@
                                         </div>
                                     </div>
                                 </div>
+                                {% empty %}
+                                <p>Pakar belum mengisi data news</p>
                                 {% endfor %}
                               
                             </div>

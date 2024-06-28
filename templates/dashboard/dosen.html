@@ -13,16 +13,17 @@
                     <h2>Dashboard</h2>
                 </div>
                 <div class="header-right">
-                    <a href="#" class="btn-add"><i class="fas fa-plus"></i> Undanganku</a>
+                    <a href="{% url 'add_kepakaran' %}" class="btn-add"><i class="fas fa-plus"></i> Add Kepakaran</a>
                     <a href="#" class="bar-icon"><i class="fas fa-bars sidebar-toggle"></i></a>
+                    <!-- <a href="#" class="bar-icon"><i class="fas fa-bars sidebar-toggle"></i></a> -->
                 </div>
             </header>
             <section class="main-section">
                 <div class="info-container">
                     <div class="info-card">
                         <div class="info-content">
-                            <p class="info-title">Undangan yang Dibuat</p>
-                            <h2>$53,000 <span class="info-change positive">+55%</span></h2>
+                            <p class="info-title">Total Pengabdian</p>
+                            <h2>$53,000 <span class="info-change positive"></span></h2>
                         </div>
                         <div class="info-icon">
                             <i class="fas fa-wallet"></i>
@@ -30,7 +31,7 @@
                     </div>
                     <div class="info-card">
                         <div class="info-content">
-                            <p class="info-title">Tamu Undangan</p>
+                            <p class="info-title">Total Penelitian</p>
                             <h2>2,300 <span class="info-change positive">+3%</span></h2>
                         </div>
                         <div class="info-icon">
@@ -39,7 +40,7 @@
                     </div>
                     <div class="info-card">
                         <div class="info-content">
-                            <p class="info-title">Ucapan & Do'a</p>
+                            <p class="info-title">Buku</p>
                             <h2>+3,020 <span class="info-change negative">-14%</span></h2>
                         </div>
                         <div class="info-icon">
@@ -48,7 +49,7 @@
                     </div>
                     <div class="info-card">
                         <div class="info-content">
-                            <p class="info-title">Klik Undangan saya</p>
+                            <p class="info-title">Halaman Diakses</p>
                             <h2>$173,000 <span class="info-change positive">+8%</span></h2>
                         </div>
                         <div class="info-icon">
@@ -81,57 +82,9 @@
                     </div>
                 </div>
 
-                <div class="table-container">
+        
                 
-                    <table class="authors-table">
-                        <thead>
-                            <tr>
-                                <th>Author</th>
-                                <th>Function</th>
-                                <th>Status</th>
-                                <th>Employed</th>
-                                <th>Edit</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="author-info">
-                                    <img src="https://via.placeholder.com/40" alt="Esthera Jackson">
-                                    <div class="author-details">
-                                        <span class="author-name">Esthera Jackson</span>
-                                        <span class="author-email">alexa@simmmple.com</span>
-                                    </div>
-                                </td>
-                                <td class="function-info">
-                                    <span class="function-role">Organization</span>
-                                    <span class="function-title">Manager</span>
-                                </td>
-                                <td class="status">
-                                    <span class="status-online">Online</span>
-                                </td>
-                                <td class="employed">14/06/21</td>
-                                <td class="edit"><a href="#">Edit</a></td>
-                            </tr>
-                            <tr>
-                                <td class="author-info">
-                                    <img src="https://via.placeholder.com/40" alt="Alexa Liras">
-                                    <div class="author-details">
-                                        <span class="author-name">Alexa Liras</span>
-                                        <span class="author-email">laurent@simmmple.com</span>
-                                    </div>
-                                </td>
-                                <td class="function-info">
-                                    <span class="function-role">Developer</span>
-                                    <span class="function-title">Programmer</span>
-                                </td>
-                                <td class="status">
-                                    <span class="status-offline">Offline</span>
-                                </td>
-                                <td class="employed">12/05/21</td>
-                                <td class="edit"><a href="#">Edit</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                
             </section>
         </main>
     </div>
