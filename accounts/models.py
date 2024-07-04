@@ -37,7 +37,7 @@ class User(AbstractUser):
     address = models.TextField(blank=True, null=True)
     birth_date = models.DateField(blank=True, null=True)
     bio = models.TextField(blank=True, null=True)
-    image = models.ImageField(default='/assets/default.jpg', upload_to='profile_pics')
+    image = models.ImageField(default='/assets/default.jpg', upload_to=rename_image)
     scopus_id = models.CharField(max_length=100, blank=True, null=True)
     sinta = models.CharField(max_length=100, blank=True, null=True)
     google_scholar = models.CharField(max_length=100, blank=True, null=True)
