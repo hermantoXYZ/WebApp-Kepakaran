@@ -7,43 +7,31 @@
 {% block content %}
 
 
-
-
-        <!-- Team Start -->
-        <div class="container-fluid team py-5">
-            <div class="container py-5">
-                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                    <h4 class="text-primary">Kepakaran FEB UNM</h4>
-                    <h1 class="display-4 mb-4">{{ bidang.nama_bidang }}</h1>
-                    <!-- <p class="mb-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.
-                    </p> -->
-                </div>
-                <div class="row g-4">
-
-                    {% for user in users %}
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <img src="{{ user.image.url }}" class="img-fluid rounded-top w-100" alt="">
-                                <!-- <div class="team-icon">
-                                    <a class="btn btn-primary btn-sm-square rounded-pill mb-2" href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-primary btn-sm-square rounded-pill mb-2" href=""><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-primary btn-sm-square rounded-pill mb-2" href=""><i class="fab fa-linkedin-in"></i></a>
-                                    <a class="btn btn-primary btn-sm-square rounded-pill mb-0" href=""><i class="fab fa-instagram"></i></a>
-                                </div> -->
-                            </div>
-                            <div class="team-title p-4">
-                                <a href="{% url 'detail_pakar' slug=user.username %}"><h5 style="color: #fff;" class="mb-0">{{ user.first_name }} {{ user.last_name }}</h5></a>
-                                <p class="mb-0"></p>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                    
-                    
-                </div>
+<div class="container">
+    <div class="header">
+        <!-- <div class="alphabet-filter">
+            <button>Name</button>
+            <button>A</button>
+            <button>B</button>
+        </div> -->
+        <p>Bidang {{ bidang.nama_bidang }}</p>
+    </div>
+    <div class="researcher-list">
+        <!-- Repeat this block for each researcher -->
+        {% for user in users %}
+        <div class="researcher-card">
+            <img src="{{ user.image.url }}" alt="Researcher Photo">
+            <div class="researcher-info">
+             <a href="{% url 'detail_pakar' slug=user.username %}"><h2>{{ user.first_name }} {{ user.last_name }}</h2"></a>   
+                <p> {{ user.pakar.program_studi.nama_program }}</p>
+                <!-- <p>{{ jumlah_penelitian }} Penelitian</p> -->
             </div>
         </div>
-        <!-- Team End -->
+        {% endfor %}     
+    </div>
+</div>
+
+
+
 
 {% endblock %}

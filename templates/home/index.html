@@ -2,374 +2,57 @@
 {% block title %}FEB-UNM{% endblock %}
 {% block content %}
 
+<div class="container">
+    <header>
+        <h2>FEB UNM</h2>
+        <h1>BIDANG KEPAKARAN UNM</h1>
+        <p>Menjadi pusat pendidikan ekonomi dan bisnis yang berdaya saing global dengan berwawasan kependidikan dan kewirausahaan pada tahun 2030</p>
+    </header>
 
-        <!-- Carousel Start -->
-        <div class="header-carousel owl-carousel">
-            <div class="header-carousel-item bg-primary">
-                <div class="carousel-caption">
-                    <div class="container">
-                        <div class="row g-4 align-items-center">
-                            <div class="col-lg-7 animated fadeInLeft">
-                                <div class="text-sm-center text-md-start">
-                                    <h4 class="text-white text-uppercase fw-bold mb-4">SUCCES IN HARMONY</h4>
-                                    <h1 class="display-1 text-white mb-4">SELAMAT DATANG</h1>
-                                    <p class="mb-5 fs-5">Menjadi pusat pendidikan ekonomi dan bisnis yang berdaya saing global.. 
-                                    </p>
-                                    <div class="d-flex justify-content-center justify-content-md-start flex-shrink-0 mb-4">
-                                        <a class="btn btn-light rounded-pill py-3 px-4 px-md-5 me-2" href="#"><i class="fas fa-play-circle me-2"></i> Watch Video</a>
-                                        <!-- <a class="btn btn-dark rounded-pill py-3 px-4 px-md-5 ms-2" href="#">Learn More</a> -->
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- <div class="col-lg-5 animated fadeInRight">
-                                <div class="calrousel-img" style="object-fit: cover;">
-                                    <img src="/media/img/carousel-2.png" class="img-fluid w-100" alt="">
-                                </div>
-                            </div> -->
-                        </div>
-                    </div>
-                </div>
+    <div class="card-container">
+        {% for bidang in bidang_list %}
+        <div class="card">
+            <div class="icon">
+                <i class="fas fa-users"></i>
             </div>
-            <div class="header-carousel-item bg-primary">
-                <div class="carousel-caption">
-                    <div class="container">
-                        <div class="row gy-4 gy-lg-0 gx-0 gx-lg-5 align-items-center">
-                            <div class="col-lg-5 animated fadeInLeft">
-                                <!-- <div class="calrousel-img">
-                                    <img src="/media/img/carousel-2.png" class="img-fluid w-100" alt="">
-                                </div> -->
-                            </div>
-                            <div class="col-lg-7 animated fadeInRight">
-                                <div class="text-sm-center text-md-end">
-                                    <h4 class="text-white text-uppercase fw-bold mb-4">SUCCES IN HARMONY</h4>
-                                    <h1 class="display-1 text-white mb-4">FEB UNM</h1>
-                                    <p class="mb-5 fs-5">Menghasilkan insan profesional dalam bidang ekonomi dan bisnis yang berwawasan kependidikan dan kewirausahaan;... 
-                                    </p>
-                                    <div class="d-flex justify-content-center justify-content-md-end flex-shrink-0 mb-4">
-                                        <a class="btn btn-light rounded-pill py-3 px-4 px-md-5 me-2" href="#"><i class="fas fa-play-circle me-2"></i> Watch Video</a>
-                                        <!-- <a class="btn btn-dark rounded-pill py-3 px-4 px-md-5 ms-2" href="#">Learn More</a> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <h3>{{ bidang.nama_bidang }}</h3>
+            <a class="learn-more" href="{% url 'bidang_kepakaran_detail' slug=bidang.slug %}">Learn More</a>
+
         </div>
-        <!-- Carousel End -->
+        {% endfor %}
+    </div>
+</div>
 
-        <!-- Feature Start -->
-        <div class="container-fluid feature bg-light py-5">
-            <div class="container py-5">
-                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                    <h4 class="text-primary">Our Features</h4>
-                    <h1 class="display-4 mb-4">SUCCES IN HARMONY</h1>
-                    <p class="mb-0">Menjadi pusat pendidikan ekonomi dan bisnis yang berdaya saing global dengan berwawasan kependidikan dan kewirausahaan pada tahun 2030
-                    </p>
-                </div>
-                <div class="row g-4">
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="feature-item p-4 pt-0">
-                            <div class="feature-icon p-4 mb-4">
+
+
+
+<!-- service -->
+<div class="service-container">
+    {% for program in program_studi %}
+    <div class="service">
         
-                                <i class="fa fa-users fa-2x"></i>
-                            </div>
-                            <h4 class="mb-4">Belajar Daring</h4>
-                            <p class="mb-4">LMS hadir dalam rangka memfasilitasi pembelajaran yang fleksibel.. 
-                            </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="https://lms.syam-ok.unm.ac.id/course/index.php?categoryid=10">Selengkapnya</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
-                        <div class="feature-item p-4 pt-0">
-                            <div class="feature-icon p-4 mb-4">
-                                <i class="fa fa-users fa-2x"></i>
-                            </div>
-                            <h4 class="mb-4">Syam OK</h4>
-                            <p class="mb-4">System and Application Management Open Knowledge
-                                Universitas Negeri Makassar
-                            </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="https://syam-ok.unm.ac.id/">Selengkapnya</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="feature-item p-4 pt-0">
-                            <div class="feature-icon p-4 mb-4">
-                                <i class="fa fa-users fa-2x"></i>
-                            </div>
-                            <h4 class="mb-4">Layanan Akademik</h4>
-                            <p class="mb-4">Sistem Informasi Akademik (SIA) Universitas Negeri Makassar untuk Layanan Akademik
-                            </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="https://sia.unm.ac.id/">Selengkapnya</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
-                        <div class="feature-item p-4 pt-0">
-                            <div class="feature-icon p-4 mb-4">
-                                <i class="fa fa-users fa-2x"></i>
-                            </div>
-                            <h4 class="mb-4">Kepakaran</h4>
-                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea hic laborum odit pariatur...
-                            </p>
-                            <a class="btn btn-primary rounded-pill py-2 px-4" href="{% url 'bidang_kepakaran' %}">Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Feature End -->
+        <!-- <p class="p-service">Responsif</p> -->
+        <a href="{% url 'program_studi_detail' slug=program.slug %}" class="p-service">{{ program.nama_program }}</a>
+       
+    </div>
+    {% endfor %}
+</div>
 
-        <!-- About Start -->
-        <!-- <div class="container-fluid bg-light about pb-5">
-            <div class="container pb-5">
-                <div class="row g-5">
-                    <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.2s">
-                        <div class="about-item-content bg-white rounded p-5 h-100">
-                            <h4 class="text-primary">About Our Company</h4>
-                            <h1 class="display-4 mb-4">Fakultas Ekonomi dan Bisnis</h1>
-                            <p>Berawal dari tahun 1961, setelah program/kursus B1 yang terdiri atas B1 Hukum, B1 Ekonomi dan Sejarah bergabung ke Universitas Hasanuddin. Kemudian pada tahun 1965 program/kursus B1 yang berkembang menjadi jurusan Civic Hukum, jurusan Ekonomi Umum, jurusan Ekonomi Perusahaan, jurusan Sejarah,
-                            </p>
-                    
-                            <p class="text-dark"><i class="fa fa-check text-primary me-3"></i>Akreditasi.</p>
-                            <p class="text-dark"><i class="fa fa-check text-primary me-3"></i>Akreditasi</p>
-                            <p class="text-dark mb-4"><i class="fa fa-check text-primary me-3"></i>Akreditasi</p>
-                            <a class="btn btn-primary rounded-pill py-3 px-5" href="#">More Information</a>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.2s">
-                        <div class="bg-white rounded p-5 h-100">
-                            <div class="row g-4 justify-content-center">
-                                <div class="col-12">
-                                    <div class="rounded bg-light">
-                                        <img src="/media/assets/Cuplikan-layar-2023-11-10-154743-Medium.png" class="img-fluid rounded w-100" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="counter-item bg-light rounded p-3 h-100">
-                                        <div class="counter-counting">
-                                            <span class="text-primary fs-2 fw-bold" data-toggle="counter-up">129</span>
-                                            <span class="h1 fw-bold text-primary">+</span>
-                                        </div>
-                                        <h4 class="mb-0 text-dark">Mahasiswa</h4>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="counter-item bg-light rounded p-3 h-100">
-                                        <div class="counter-counting">
-                                            <span class="text-primary fs-2 fw-bold" data-toggle="counter-up">99</span>
-                                            <span class="h1 fw-bold text-primary">+</span>
-                                        </div>
-                                        <h4 class="mb-0 text-dark">Alumni</h4>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="counter-item bg-light rounded p-3 h-100">
-                                        <div class="counter-counting">
-                                            <span class="text-primary fs-2 fw-bold" data-toggle="counter-up">556</span>
-                                            <span class="h1 fw-bold text-primary">+</span>
-                                        </div>
-                                        <h4 class="mb-0 text-dark">Tenaga Pengajar</h4>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="counter-item bg-light rounded p-3 h-100">
-                                        <div class="counter-counting">
-                                            <span class="text-primary fs-2 fw-bold" data-toggle="counter-up">967</span>
-                                            <span class="h1 fw-bold text-primary">+</span>
-                                        </div>
-                                        <h4 class="mb-0 text-dark"></h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!-- About End -->
+    <!-- Testimonial -->
+    <div class="brand-title-wrapper animate__animated animate__slideInLeft"><h5>Minat Penelitian</h5></div>
+    <!-- service -->
 
-        <!-- Service Start -->
-        <div class="container-fluid service py-5">
-            <div class="container py-5">
-                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                    <h4 class="text-primary">Program Studi</h4>
-                    <h1 class="display-4 mb-4">FEB UNM</h1>
-                    <p class="mb-0">Fakultas ini terdiri dari 8 Program Studi (Prodi)
-                    </p>
-                </div>
-                <div class="row g-4 justify-content-center">
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="service-item">
-                            <div class="service-img">
-                                <!-- <img src="/media/img/blog-3.png" class="img-fluid rounded-top w-100" alt=""> -->
-                                <div class="service-icon p-3">
-                                    <i class="fa fa-car fa-2x"></i>
-                                </div>
-                            </div>
-                            <div class="service-content p-4">
-                                <div class="service-content-inner">
-                                    <a href="#" class="d-inline-block h5 mb-3">Pendidikan Ekonomi (S1)</a>
-                                    <!-- <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, eum!</p> -->
-                               
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <div class="service-container-tag">
+        {% for tag in tags %}
+               
 
+            <a href="{% url 'users_by_tag' tag.slug %}" class="program-name-tag">#{{ tag.name }}</a>
+        {% endfor %}
+    </div>
+<!-- End service -->
 
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
-                        <div class="service-item">
-                            <div class="service-img">
-                             
-                                <div class="service-icon p-3">
-                                    <i class="fa fa-home fa-2x"></i>
-                                </div>
-                            </div>
-                            <div class="service-content p-4">
-                                <div class="service-content-inner">
-                                    <a href="#" class="d-inline-block h5 mb-3">Pendidikan Akuntansi (S1)</a>
-                                    <!-- <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, eum!</p> -->
-                                 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="service-item">
-                            <div class="service-img">
-                                <!-- <img src="/media/img/blog-1.png" class="img-fluid rounded-top w-100" alt=""> -->
-                                <div class="service-icon p-3">
-                                    <i class="fa fa-users fa-2x"></i>
-                                </div>
-                            </div>
-                            <div class="service-content p-4">
-                                <div class="service-content-inner">
-                                    <a href="#" class="d-inline-block h5 mb-3"> Manajemen (S1)</a>
-                                    <!-- <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, eum!</p> -->
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
-                        <div class="service-item">
-                            <div class="service-img">
-                                <!-- <img src="/media/img/blog-2.png" class="img-fluid rounded-top w-100" alt=""> -->
-                                <div class="service-icon p-3">
-                                    <i class="fa fa-hospital fa-2x"></i>
-                                </div>
-                            </div>
-                            <div class="service-content p-4">
-                                <div class="service-content-inner">
-                                    <a href="#" class="d-inline-block h5 mb-3">Ekonomi Pembangunan (S1)</a>
-                                    <!-- <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, eum!</p> -->
-                                  
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                  
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
-                        <div class="service-item">
-                            <div class="service-img">
-                                <!-- <img src="/media/img/blog-4.png" class="img-fluid rounded-top w-100" alt=""> -->
-                                <div class="service-icon p-3">
-                                    <i class="fa fa-home fa-2x"></i>
-                                </div>
-                            </div>
-                            <div class="service-content p-4">
-                                <div class="service-content-inner">
-                                    <a href="#" class="d-inline-block h5 mb-3">Akuntansi (S1)</a>
-                                    <!-- <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, eum!</p> -->
-                                  
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                   
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
-                        <div class="service-item">
-                            <div class="service-img">
-                                <!-- <img src="/media/img/blog-4.png" class="img-fluid rounded-top w-100" alt=""> -->
-                                <div class="service-icon p-3">
-                                    <i class="fa fa-home fa-2x"></i>
-                                </div>
-                            </div>
-                            <div class="service-content p-4">
-                                <div class="service-content-inner">
-                                    <a href="#" class="d-inline-block h5 mb-3">Kewirausahaan (S1)</a>
-                                    <!-- <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, eum!</p> -->
-                                   
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
-                        <div class="service-item">
-                            <div class="service-img">
-                                <!-- <img src="/media/img/blog-4.png" class="img-fluid rounded-top w-100" alt=""> -->
-                                <div class="service-icon p-3">
-                                    <i class="fa fa-home fa-2x"></i>
-                                </div>
-                            </div>
-                            <div class="service-content p-4">
-                                <div class="service-content-inner">
-                                    <a href="#" class="d-inline-block h5 mb-3">Bisnis Digital (S1)</a>
-                                    <!-- <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, eum!</p> -->
-                                   
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-
-
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
-                        <div class="service-item">
-                            <div class="service-img">
-                                <!-- <img src="/media/img/blog-4.png" class="img-fluid rounded-top w-100" alt=""> -->
-                                <div class="service-icon p-3">
-                                    <i class="fa fa-home fa-2x"></i>
-                                </div>
-                            </div>
-                            <div class="service-content p-4">
-                                <div class="service-content-inner">
-                                    <a href="#" class="d-inline-block h5 mb-3">Akuntansi Terapan (D4)</a>
-                                    <!-- <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, eum!</p> -->
-                              
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                  
-                    <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.2s">
-                        <a class="btn btn-primary rounded-pill py-3 px-5" href="#">More Services</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Service End -->
-
-
-        <!-- Blog Start -->
-        <div class="container-fluid blog py-5">
-            <div class="container py-5">
-                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                    <h4 class="text-primary">Berita Seputar Fakultas FEB UNM</h4>
-                    <h1 class="display-4 mb-4">News And Updates</h1>
-                    <!-- <p class="mb-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.
-                    </p> -->
-                </div>
-                <div class="row g-4 justify-content-center">
                     {% for news in news_list %}
-                    <div class="col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="blog-item">
-                            <div class="blog-img">
+                    
                                 {% if news.images %}
                                 <img src="{{ news.images.url }}" class="img-fluid rounded-top w-100" alt="">
                                 {% endif %}
@@ -394,96 +77,4 @@
 
 
 
-
-
-
-
-
-                </div>
-            </div>
-        </div>
-        <!-- Blog End -->
-
-        <!-- Team Start -->
-        <!-- <div class="container-fluid team pb-5">
-            <div class="container pb-5">
-                <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
-                    <h4 class="text-primary">Pimpinan</h4>
-                    <h1 class="display-4 mb-4"> EKONOMI DAN BISNIS UNM</h1>
-                    <p class="mb-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.
-                    </p>
-                </div>
-                <div class="row g-4">
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <img src="/media/assets/dekan.png" class="img-fluid rounded-top w-100" alt="">
-                                <div class="team-icon">
-                                    <a class="btn btn-primary btn-sm-square rounded-pill mb-2" href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-primary btn-sm-square rounded-pill mb-2" href=""><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-primary btn-sm-square rounded-pill mb-2" href=""><i class="fab fa-linkedin-in"></i></a>
-                                    <a class="btn btn-primary btn-sm-square rounded-pill mb-0" href=""><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-title p-4">
-                                <h4 class="mb-0">Prof. Dr. Basri Bado, S.Pd., M.Si. </h4>
-                                <p class="mb-0">DEKAN FEB UNM</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <img src="/media/assets/dekan.png" class="img-fluid rounded-top w-100" alt="">
-                                <div class="team-icon">
-                                    <a class="btn btn-primary btn-sm-square rounded-pill mb-2" href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-primary btn-sm-square rounded-pill mb-2" href=""><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-primary btn-sm-square rounded-pill mb-2" href=""><i class="fab fa-linkedin-in"></i></a>
-                                    <a class="btn btn-primary btn-sm-square rounded-pill mb-0" href=""><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-title p-4">
-                                <h4 class="mb-0">Prof. Dr. Basri Bado, S.Pd., M.Si.</h4>
-                                <p class="mb-0">***</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <img src="/media/assets/dekan.png" class="img-fluid rounded-top w-100" alt="">
-                                <div class="team-icon">
-                                    <a class="btn btn-primary btn-sm-square rounded-pill mb-2" href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-primary btn-sm-square rounded-pill mb-2" href=""><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-primary btn-sm-square rounded-pill mb-2" href=""><i class="fab fa-linkedin-in"></i></a>
-                                    <a class="btn btn-primary btn-sm-square rounded-pill mb-0" href=""><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-title p-4">
-                                <h4 class="mb-0">Prof. Dr. Basri Bado, S.Pd., M.Si.</h4>
-                                <p class="mb-0">***</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <img src="/media/assets/dekan.png" class="img-fluid rounded-top w-100" alt="">
-                                <div class="team-icon">
-                                    <a class="btn btn-primary btn-sm-square rounded-pill mb-2" href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-primary btn-sm-square rounded-pill mb-2" href=""><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-primary btn-sm-square rounded-pill mb-2" href=""><i class="fab fa-linkedin-in"></i></a>
-                                    <a class="btn btn-primary btn-sm-square rounded-pill mb-0" href=""><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-title p-4">
-                                <h4 class="mb-0">Prof. Dr. Basri Bado, S.Pd., M.Si.</h4>
-                                <p class="mb-0">***</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!-- Team End -->
 {% endblock %}

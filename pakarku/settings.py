@@ -59,7 +59,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'kampusku.urls'
+ROOT_URLCONF = 'pakarku.urls'
 
 TEMPLATES = [
     {
@@ -79,32 +79,32 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'kampusku.wsgi.application'
+WSGI_APPLICATION = 'pakarku.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'bisdigun_kampusku',
-#         'USER': 'bisdigun_kampusku',
-#         'PASSWORD': 'Hermanto+12',
-#         'HOST': 'localhost',
-#         'PORT': '3306',
-#         'OPTIONS': {
-#             'sql_mode': 'STRICT_TRANS_TABLES',
-#         },
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'db_pakarku',
+        'USER': 'root',
+        'PASSWORD': 'Hermanto+12',
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'OPTIONS': {
+            'sql_mode': 'STRICT_TRANS_TABLES',
+        },
+    }
+}
 
 
 # Password validation

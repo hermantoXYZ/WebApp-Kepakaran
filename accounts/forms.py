@@ -161,7 +161,7 @@ class SignUpForm(UserCreationForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email', 'phone_number', 'bio', 'image', 'scopus_id', 'sinta', 'google_scholar', 'linkedin']
+        fields = ['first_name', 'last_name', 'email', 'phone_number', 'address', 'bio', 'image', 'scopus_id', 'sinta', 'google_scholar', 'linkedin']
 
     def clean_email(self):
         email = self.cleaned_data.get('email')

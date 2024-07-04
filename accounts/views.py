@@ -6,7 +6,8 @@ from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordResetView
 
-from .models import PostNews, Page
+from .models import PostNews, Page, BidangKepakaran, ProgramStudi
+from taggit.models import Tag
 
 class CustomPasswordResetView(PasswordResetView):
     success_url = '/accounts/reset/password/done/'
@@ -70,11 +71,16 @@ def logout_view(request):
 
 def index(request):
     news_list = PostNews.objects.all()
+    bidang_list = BidangKepakaran.objects.all()
+    program_studi = ProgramStudi.objects.all()
+    tags = Tag.objects.all()
 
     context = {
-        'news_list': news_list
+        'news_list': news_list,
+        'bidang_list': bidang_list,
+        'tags': tags,
+        'program_studi': program_studi
     }
-    
     return render(request, 'home/index.html', context)
 
 def news_detail(request, slug):

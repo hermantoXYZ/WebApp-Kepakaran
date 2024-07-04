@@ -16,7 +16,23 @@ def is_dosen(user):
 @login_required
 @user_passes_test(is_dosen)
 def dosen(request):
-    return render(request, 'dashboard/dosen.html')
+    pakar = get_object_or_404(Pakar, user=request.user)
+    total_penelitian = Penelitian.objects.filter(pakar=pakar).count()
+    total_buku = Book.objects.filter(pakar=pakar).count()
+    total_news = InTheNews.objects.filter(pakar=pakar).count()
+    total_pengabdian = Pengabdian.objects.filter(pakar=pakar).count()
+
+    context = {
+        'pakar': pakar,
+        'total_penelitian': total_penelitian,
+        'total_buku': total_buku,
+        'total_news': total_news,
+        'total_pengabdian': total_pengabdian
+    }
+
+    return render(request, 'dashboard/dosen.html', context)
+
+
 
 @login_required
 @user_passes_test(is_dosen)
@@ -75,7 +91,8 @@ def edit_penelitian(request, penelitian_id):
 def list_penelitian(request):
     pakar = get_object_or_404(Pakar, user=request.user)
     penelitian_list = Penelitian.objects.filter(pakar=pakar).order_by('-id')
-    return render(request, 'dashboard/list_penelitian.html', {'penelitian_list': penelitian_list})
+    jumlah_penelitian = penelitian_list.count()
+    return render(request, 'dashboard/list_penelitian.html', {'penelitian_list': penelitian_list, 'jumlah_penelitian': jumlah_penelitian})
 
 
 @login_required
@@ -119,7 +136,9 @@ def book(request):
 def list_buku(request):
     pakar = get_object_or_404(Pakar, user=request.user)
     book_list = Book.objects.filter(pakar=pakar).order_by('-id')
-    return render(request, 'dashboard/list_book.html', {'book_list': book_list})
+    jumlah_buku = book_list.count()
+
+    return render(request, 'dashboard/list_book.html', {'book_list': book_list, 'jumlah_buku': jumlah_buku})
 
 
 
@@ -207,8 +226,10 @@ def delete_news(request, news_id):
 def list_news(request):
     pakar = get_object_or_404(Pakar, user=request.user)
     news_list = InTheNews.objects.filter(pakar=pakar).order_by('-id')
+    jumlah_news = news_list.count()
+
     # news_list = InTheNews.objects.all().order_by('-id')
-    return render(request, 'dashboard/list_news.html', {'news_list': news_list})
+    return render(request, 'dashboard/list_news.html', {'news_list': news_list, 'jumlah_news': jumlah_news})
 
 
 
@@ -295,8 +316,9 @@ def edit_organisasi(request, organisasi_id):
 def list_organisasi(request):
     pakar = get_object_or_404(Pakar, user=request.user)
     organisasi_list = Organisasi.objects.filter(pakar=pakar).order_by('-id')
+    jumlah_organisasi = organisasi_list.count()
     # organisasi_list = Organisasi.objects.all().order_by('-id')
-    return render(request, 'dashboard/list_organisasi.html', {'organisasi_list': organisasi_list})
+    return render(request, 'dashboard/list_organisasi.html', {'organisasi_list': organisasi_list, 'jumlah_organisasi': jumlah_organisasi})
 
 @login_required
 @user_passes_test(is_dosen)
@@ -364,8 +386,9 @@ def edit_pendidikan(request, pendidikan_id):
 def list_pendidikan(request):
     pakar = get_object_or_404(Pakar, user=request.user)
     pendidikan_list = Pendidikan.objects.filter(pakar=pakar).order_by('-id')
+    jumlah_pendidikan = pendidikan_list.count()
     # pendidikan_list = Pendidikan.objects.all().order_by('-id')
-    return render(request, 'dashboard/list_pendidikan.html', {'pendidikan_list': pendidikan_list})
+    return render(request, 'dashboard/list_pendidikan.html', {'pendidikan_list': pendidikan_list, 'jumlah_pendidikan': jumlah_pendidikan})
 
 @login_required
 @user_passes_test(is_dosen)
@@ -411,8 +434,9 @@ def pengabdian(request):
 def list_pengabdian(request):
     pakar = get_object_or_404(Pakar, user=request.user)
     pengabdian_list = Pengabdian.objects.filter(pakar=pakar).order_by('-id')
+    total_pengabdian = pengabdian_list.count()
     # pengabdian_list = Pengabdian.objects.all().order_by('-id').order_by('-id')
-    return render(request, 'dashboard/list_pengabdian.html', {'pengabdian_list': pengabdian_list})
+    return render(request, 'dashboard/list_pengabdian.html', {'pengabdian_list': pengabdian_list, 'total_pengabdian': total_pengabdian})
 
 @login_required
 @user_passes_test(is_dosen)
@@ -537,13 +561,45 @@ def BidangKepakaranView(request):
 def bidang_kepakaran_detail(request, slug):
     bidang = get_object_or_404(BidangKepakaran, slug=slug)
     users = bidang.get_users()
-    return render(request, 'kepakaran/bidang_kepakaran_detail.html', {'bidang': bidang, 'users': users})
+    jumlah_penelitian = Penelitian.objects.filter(pakar__bidang_kepakaran=bidang).count()
 
-def program_studi_detail (request, slug):
+
+    context = {
+        'bidang': bidang,
+        'users': users,
+        'jumlah_penelitian': jumlah_penelitian,
+    }
+
+    return render(request, 'kepakaran/bidang_kepakaran_detail.html', context)
+
+
+def program_studi_detail(request, slug):
     program_studi = get_object_or_404(ProgramStudi, slug=slug)
     users = program_studi.get_users()
-    return render(request, 'kepakaran/program_studi_detail.html', {'program_studi': program_studi, 'users': users})
 
+    # Menghitung jumlah Pakar dalam Program Studi ini
+    total_pakar = program_studi.pakar.count()
+
+    # user_pengabdian_counts = []
+    # for user in users:
+    #     pengabdian_count = Pengabdian.objects.filter(pakar__user=user).count()
+    #     user_pengabdian_counts.append({'user': user, 'total_pengabdian': pengabdian_count})
+
+    # user_penelitian_counts = []
+    # for user in users:
+    #     penelitian_count = Penelitian.objects.filter(pakar__user=user).count()
+    #     user_penelitian_counts.append({'user': user, 'total_penelitian': penelitian_count})
+
+    
+    
+    return render(request, 'kepakaran/program_studi_detail.html', {
+        'program_studi': program_studi,
+        'users': users,
+        'total_pakar': total_pakar,
+        # 'user_pengabdian_counts': user_pengabdian_counts,
+        # 'user_penelitian_counts': user_penelitian_counts
+  
+    })
 
 class DetailPakarView(DetailView):
     model = Pakar
@@ -566,4 +622,11 @@ class DetailPakarView(DetailView):
 def users_by_tag(request, tag_slug):
     tag = get_object_or_404(Tag, slug=tag_slug)
     users = Pakar.objects.filter(tags__name__in=[tag.name])
-    return render(request, 'kepakaran/users_by_tag.html', {'tag': tag, 'users': users})
+    program_studi = ProgramStudi.objects.all()  # Ambil semua program studi
+    
+    context = {
+        'tag': tag,
+        'users': users,
+        'program_studi': program_studi,  # Tambahkan program studi ke konteks
+    }
+    return render(request, 'kepakaran/users_by_tag.html', context)
