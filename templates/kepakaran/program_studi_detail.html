@@ -1,6 +1,6 @@
 
 {% extends 'home/base.html' %}
-{% block title %}Kepakaran {{ bidang.nama_bidang }} {% endblock %}
+{% block title %}Kepakaran {{ program_studi.nama_program }} {% endblock %}
 
 
     
@@ -24,8 +24,7 @@
             <div class="researcher-info">
              <a href="{% url 'detail_pakar' slug=user.username %}"><h2>{{ user.first_name }} {{ user.last_name }}</h2"></a>   
                 <p> {{ user.pakar.program_studi.nama_program }}</p>
-                <p>Pengabdian: {{ user.pakar.pengabdian.all.count }}</p>
-                <p>Penelitian: {{ user.pakar.penelitian.all.count }}</p>
+                <p class="p-details">{{ user.pakar.penelitian.all.count }} Publication | {{ user.pakar.pengabdian.all.count }} Pengabdian</p>
             </div>
         </div>
         {% empty %}

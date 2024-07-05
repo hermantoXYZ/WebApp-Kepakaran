@@ -58,6 +58,9 @@ class PakarAdmin(admin.ModelAdmin):
     list_display = ('user', 'get_bidang_kepakaran')
     inlines = [PendidikanInline,  PengabdianInline, OrganisasiInline, BookInline, PenelitianInline, InTheNewsInline,]
     filter_horizontal = ('bidang_kepakaran',)
+    
+    search_fields = ['user__username', 'bidang_kepakaran__name', 'program_studi__name', 'tags__name']
+
 
     def get_bidang_kepakaran(self, obj):
         return ", ".join([bk.nama_bidang for bk in obj.bidang_kepakaran.all()])

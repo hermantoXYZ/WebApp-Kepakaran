@@ -9,14 +9,10 @@
 
 
 <div class="container">
-    <div class="header">
-        <!-- <div class="alphabet-filter">
-            <button>Name</button>
-            <button>A</button>
-            <button>B</button>
-        </div> -->
-        <p>{{ tag.name }}</p>
-    </div>
+    <header>
+        <h1># TAG {{ tag.name|upper }}</h1>
+    
+    </header>
     <div class="researcher-list">
         <!-- Repeat this block for each researcher -->
         {% for pakar in users %}

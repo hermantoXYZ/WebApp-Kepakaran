@@ -198,3 +198,6 @@ class PasswordResetConfirmForm(forms.Form):
 #     class Meta:
 #         model = Page
 #         fields = '__all__'
+
+class SearchForm(forms.Form):
+    query = forms.CharField(label='Search', max_length=100)

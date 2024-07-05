@@ -8,14 +8,9 @@
 
 
 <div class="container">
-    <div class="header">
-        <!-- <div class="alphabet-filter">
-            <button>Name</button>
-            <button>A</button>
-            <button>B</button>
-        </div> -->
-        <p>Bidang {{ bidang.nama_bidang }}</p>
-    </div>
+    <header>
+        <h1>BIDANG {{ bidang.nama_bidang|upper }}</h1>
+    </header>
     <div class="researcher-list">
         <!-- Repeat this block for each researcher -->
         {% for user in users %}
@@ -27,6 +22,8 @@
                 <!-- <p>{{ jumlah_penelitian }} Penelitian</p> -->
             </div>
         </div>
+        {% empty %}
+        <p>Author's data not available yet at login.febunm.ac.id.</p>
         {% endfor %}     
     </div>
 </div>

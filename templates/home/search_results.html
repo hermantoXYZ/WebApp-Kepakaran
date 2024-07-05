@@ -1,0 +1,47 @@
+
+{% extends 'home/base.html' %}
+{% block title %}Result: {{ query }} {% endblock %}
+{% block content %}
+
+<div class="container-search">
+    
+    <img src="/media/logo/logo_unm.png" alt="University Logo" class="logo">
+    <form method="get" action="{% url 'search' %}">
+    <div class="search-input">
+        <input type="text" name="query" placeholder="Input your keywords (eg: expert’s name / lecturer’s name, program studi, etc)..." value="{{ query|default_if_none:'' }}">
+        <button type="submit"><i class="fas fa-search"></i></button>
+    </div>
+    </form>
+</div>
+
+
+<div class="container">
+    <header>
+        <h1>Search Results </h1>
+        <p>Search result found "{{ query }}" data with keyword</p>
+    </header>
+    <div class="researcher-list">
+
+        {% if query %}
+            {% for pakar in results %}
+            <div class="researcher-card">
+                <img src="{{ pakar.user.image.url }}" alt="Researcher Photo">
+                <div class="researcher-info">
+                    <a href="{% url 'detail_pakar' slug=pakar.user.username %}"><h2>{{ pakar.user.first_name }} {{ pakar.user.last_name }}</h2></a>
+                    <p>{{ pakar.program_studi.nama_program }}</p>
+                    <p class="p-details">{{ pakar.penelitian.count }} Publication | {{ pakar.pengabdian.count }} Pengabdian</p>
+                </div>
+            </div>
+            {% empty %}
+            <div class="notfound">
+                <p>Author's data not available yet at login.febunm.ac.id.</p>
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+
+
+
+
+{% endblock %}

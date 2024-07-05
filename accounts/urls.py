@@ -71,5 +71,7 @@ urlpatterns = [
     path('pakar/<slug:slug>/', viewsDosen.DetailPakarView.as_view(), name='detail_pakar'),
     path('bidang/kepakaran/<slug:slug>/', viewsDosen.bidang_kepakaran_detail, name='bidang_kepakaran_detail'),
     path('bidang/program-studi/<slug:slug>/', viewsDosen.program_studi_detail, name='program_studi_detail'),
+
+    path('search/', views.search, name='search'),
 ]
 

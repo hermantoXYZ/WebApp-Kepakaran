@@ -6,8 +6,12 @@ from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordResetView
 
-from .models import PostNews, Page, BidangKepakaran, ProgramStudi
+from .models import PostNews, Page, BidangKepakaran, ProgramStudi, Pakar
 from taggit.models import Tag
+
+from django.db.models import Q
+from .forms import SearchForm
+
 
 class CustomPasswordResetView(PasswordResetView):
     success_url = '/accounts/reset/password/done/'
@@ -97,3 +101,22 @@ def page_detail (request, slug):
         'page': page
     }
     return render(request, 'home/page_detail.html', context)
+
+
+
+def search(request):
+    form = SearchForm()
+    query = None
+    results = []
+    
+    if 'query' in request.GET:
+        form = SearchForm(request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            results = Pakar.objects.filter(
+                Q(user__username__icontains=query) |
+                Q(bidang_kepakaran__nama_bidang__icontains=query) |
+                Q(program_studi__nama_program__icontains=query) |
+                Q(tags__name__icontains=query)
+            ).exclude(user__username='admin').distinct()
+    return render(request, 'home/search_results.html', {'form': form, 'query': query, 'results': results})

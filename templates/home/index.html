@@ -2,9 +2,19 @@
 {% block title %}FEB-UNM{% endblock %}
 {% block content %}
 
+
+<div class="container-search">
+    
+    <img src="/media/logo/logo_unm.png" alt="University Logo" class="logo">
+    <form method="get" action="{% url 'search' %}">
+    <div class="search-input">
+        <input type="text" name="query" placeholder="Input your keywords (eg: expert’s name / lecturer’s name, program studi, etc)..." value="{{ query|default_if_none:'' }}">
+        <button type="submit"><i class="fas fa-search"></i></button>
+    </div>
+    </form>
+</div>
 <div class="container">
     <header>
-        <h2>FEB UNM</h2>
         <h1>BIDANG KEPAKARAN UNM</h1>
         <p>Menjadi pusat pendidikan ekonomi dan bisnis yang berdaya saing global dengan berwawasan kependidikan dan kewirausahaan pada tahun 2030</p>
     </header>

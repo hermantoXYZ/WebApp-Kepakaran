@@ -590,8 +590,7 @@ def program_studi_detail(request, slug):
     #     penelitian_count = Penelitian.objects.filter(pakar__user=user).count()
     #     user_penelitian_counts.append({'user': user, 'total_penelitian': penelitian_count})
 
-    
-    
+
     return render(request, 'kepakaran/program_studi_detail.html', {
         'program_studi': program_studi,
         'users': users,
@@ -630,3 +629,6 @@ def users_by_tag(request, tag_slug):
         'program_studi': program_studi,  # Tambahkan program studi ke konteks
     }
     return render(request, 'kepakaran/users_by_tag.html', context)
+
+
+
