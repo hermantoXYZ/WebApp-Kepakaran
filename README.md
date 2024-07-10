@@ -8,15 +8,15 @@ Welcome to the Kepakaran Web Application! This README will guide you through the
 
 ### 1. User Model
 The `User` model extends Django's `AbstractUser` and includes additional fields:
-- `is_admin`: Boolean field indicating if the user is an admin.
-- `is_staff`: Boolean field indicating if the user is staff.
-- `is_dosen`: Boolean field indicating if the user is a faculty member.
-- `is_user`: Boolean field indicating if the user is a regular user.
-- `phone_number`: Optional phone number field.
-- `address`: Optional address field.
-- `birth_date`: Optional birth date field.
-- `bio`: Optional biography field.
-- `image`: Profile image field with a default image.
+- `is_admin`: 
+- `is_staff`: 
+- `is_dosen`: 
+- `is_user`: 
+- `phone_number`: 
+- `address`: 
+- `birth_date`: 
+- `bio`: 
+- `image`: 
 - `scopus_id`, `sinta`, `google_scholar`, `linkedin`: Optional fields for academic and professional identifiers.
 
 ![](/screenshot/pakar.bisdigunm.com_pakar_alamyin_.png)
@@ -24,8 +24,8 @@ The `User` model extends Django's `AbstractUser` and includes additional fields:
 
 ### 3. Category Model
 The `Category` model categorizes content.
-- `name`: Name of the category.
-- `slug`: Unique slug for the category.
+- `name`: N
+- `slug`: 
 
 A pre-save signal ensures the `slug` is created from the `name` if not provided.
 
@@ -33,17 +33,17 @@ A pre-save signal ensures the `slug` is created from the `name` if not provided.
 
 ### 5. ProgramStudi Model
 The `ProgramStudi` model represents study programs.
-- `nama_program`: Name of the study program.
-- `slug`: Unique slug for the study program.
+- `nama_program`: 
+- `slug`: 
 
 The `get_users` method returns all users associated with the study program.
 
 ![](/screenshot/pakar.bisdigunm.com_adminku_accounts_programstudi_.png)
 
 ### 6. BidangKepakaran Model
-The `BidangKepakaran` model represents fields of expertise.
-- `nama_bidang`: Name of the field of expertise.
-- `slug`: Unique slug for the field of expertise.
+The `BidangKepakaran` 
+- `nama_bidang`: 
+- `slug`: 
 
 The `get_users` method returns all users associated with the field of expertise.
 [](/screenshot/pakar.bisdigunm.com_adminku_accounts_bidangkepakaran_.png)
@@ -51,60 +51,66 @@ The `get_users` method returns all users associated with the field of expertise.
 
 ### 7. Pakar Model
 The `Pakar` model represents experts and links them to users.
-- `user`: One-to-one field to the `User` model.
-- `bidang_kepakaran`: Many-to-many field to the `BidangKepakaran` model.
-- `program_studi`: Foreign key to the `ProgramStudi` model.
+- `user`: O
+- `bidang_kepakaran`: 
+- `program_studi`:
 - `tags`: Tags managed by `TaggableManager`.
+
+![](/screenshot/pakar.bisdigunm.com_search__query=a.png)
 
 ### 8. Pendidikan Model
 The `Pendidikan` model represents education details of experts.
-- `pakar`: Foreign key to the `Pakar` model.
-- `pendidikan`: Name of the education.
-- `tahun`: Year of completion.
-- `program_studi`: Name of the study program.
+- `pakar`: 
+- `pendidikan`:
+- `tahun`: 
+- `program_studi`
 
 
 ### 9. Penelitian Model
 The `Penelitian` model represents research conducted by experts.
 - `pakar`: Foreign key to the `Pakar` model.
-- `judul_penelitian`: Title of the research.
-- `tahun_penelitian`: Year of the research.
-- `link_penelitian`: Optional link to the research.
-- `tim_penelitian`: Optional team members.
+- `judul_penelitian`: 
+- `tahun_penelitian`: 
+- `link_penelitian`: 
+- `tim_penelitian`:
 - `category_penelitian`: Category of the research (Nasional/Internasional).
+
+![](/screenshot/pakar.bisdigunm.com_dashboard_dosen_list_penelitian.png)
 
 ### 10. InTheNews Model
 The `InTheNews` model represents news articles featuring the experts.
-- `pakar`: Foreign key to the `Pakar` model.
-- `judul_news`: Title of the news article.
-- `tanggal_terbit`: Publication date.
-- `link_news`: Link to the news article.
-- `media`: Media source.
-- `picture`: Optional picture associated with the news article.
+- `pakar`: 
+- `judul_news`: 
+- `tanggal_terbit`:
+- `link_news`:
+- `media`: 
+- `picture`: 
+
+![](/screenshot/pakar.bisdigunm.com_dashboard_dosen.png)
 
 ### 11. Pengabdian Model
 The `Pengabdian` model represents community service activities by experts.
-- `pakar`: Foreign key to the `Pakar` model.
-- `judul_pengabdian`: Title of the community service activity.
-- `tahun_pengabdian`: Year of the activity.
-- `link_pengabdian`: Optional link to the activity.
-- `tim_pengabdian`: Optional team members.
+- `pakar`
+- `judul_pengabdian`
+- `tahun_pengabdian`:
+- `link_pengabdian`
+- `tim_pengabdian`
 
 ### 12. Book Model
 The `Book` model represents books authored by the experts.
-- `pakar`: Foreign key to the `Pakar` model.
-- `judul_book`: Title of the book.
-- `tahun_book`: Year of publication.
-- `link_book`: Optional link to the book.
-- `penerbit`: Publisher of the book.
-- `cover_book`: Optional cover image of the book.
+- `pakar`: 
+- `judul_book`
+- `tahun_book`
+- `link_book`
+- `penerbit`:
+- `cover_book`
 
 ### 13. Organisasi Model
 The `Organisasi` model represents organizational memberships or positions held by experts.
-- `pakar`: Foreign key to the `Pakar` model.
-- `nama_organisasi`: Name of the organization.
-- `tahun_organisasi`: Year of the membership or position.
-- `jabatan_organisasi`: Position held in the organization.
+- `pakar`
+- `nama_organisasi`
+- `tahun_organisasi`
+- `jabatan_organisasi`
 
 
 # Dashboard Admin
