@@ -4,7 +4,7 @@ from django.conf import settings
 
 # myapp/context_processors.py
 def versioned_static(request):
-    version = 'v1.2.2'  # Increment this version number
+    version = 'v1.2.12'  # Increment this version number
     return {
         'STATIC_VERSION': version,
     }

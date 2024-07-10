@@ -52,20 +52,16 @@ class BookInline(admin.TabularInline):
     extra = 1
 
 
-
-
 class PakarAdmin(admin.ModelAdmin):
-    list_display = ('user', 'get_bidang_kepakaran')
-    inlines = [PendidikanInline,  PengabdianInline, OrganisasiInline, BookInline, PenelitianInline, InTheNewsInline,]
+    list_display = ('user',  'get_bidang_kepakaran', 'program_studi')
+    inlines = [PendidikanInline, PengabdianInline, OrganisasiInline, BookInline, PenelitianInline, InTheNewsInline]
     filter_horizontal = ('bidang_kepakaran',)
-    
-    search_fields = ['user__username', 'bidang_kepakaran__name', 'program_studi__name', 'tags__name']
-
+    list_filter = ('user', 'bidang_kepakaran', 'program_studi')
+    search_fields = ['user__username', 'user__first_name', 'user__last_name', 'bidang_kepakaran__nama_bidang', 'program_studi__nama_program', 'tags__name']
 
     def get_bidang_kepakaran(self, obj):
         return ", ".join([bk.nama_bidang for bk in obj.bidang_kepakaran.all()])
     get_bidang_kepakaran.short_description = 'Bidang Kepakaran'
-
 
 
 admin.site.register(BidangKepakaran, BidangKepakaranAdmin)

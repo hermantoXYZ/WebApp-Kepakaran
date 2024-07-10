@@ -50,6 +50,9 @@ height: 1px;
     justify-content: center;
     align-items: center;
     border-bottom: 1px dashed #ccc;
+
+    position: sticky;
+    top: 0px;
 }
 
 .navbar-container {
@@ -127,7 +130,10 @@ height: 1px;
 }
 
 
-
+.auth-buttons {
+    gap: 10px;
+    display: flex;
+}
 
 
 .btn.login {
@@ -282,7 +288,7 @@ height: 1px;
     .menu-toggle {
         display: flex;
         background-color: #ffffff;
-        padding: 10px;
+        padding: 5px;
         border-radius: 1px;
         /* border-style: solid; */
         border-color: #e4e4e7;
@@ -907,17 +913,6 @@ font-size: 12px;
     background-color: #32cd32;
 }
 
-@media (max-width: 768px) {
-    .pricing-table {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .plan {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-}
 
 .service-container-tag {
     display: flex;
@@ -954,6 +949,40 @@ font-size: 12px;
     width: 150px;
 }
 /* Bidang Kepakaran Section */
+
+
+
+@media (max-width: 768px) {
+    .pricing-table {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .plan {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .service-container-tag {
+        background-color: #f8f9fa;
+        gap: 5px;
+        margin: 10px;
+    }
+
+   .program-name-tag {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        background-color: #a1a1a1;
+        color: #fff;
+        display: block;
+        padding:4px;
+    }
+    .container-search img {
+        width: 100px;
+    }
+}
+
 
 .container {
     max-width: 1200px;
@@ -1418,8 +1447,9 @@ header p {
 .search-input button {
     padding: 10px;
     border: none;
-    font-size: 20px;
-    background-color: #f8f9fa;
+    margin-left: -50px;
+    /* font-size: 20px; */
+    background-color: #b1b1b1;
     color: #000000;
     border-radius: 0 5px 5px 0;
     cursor: pointer;
@@ -1446,9 +1476,16 @@ header p {
 
     .search-input input {
         font-size: 0.9em;
+        flex-direction: column;
+        width: 100%;
     }
 
     .search-input button {
         font-size: 0.9em;
     }
+
+
+
 }
+
+
