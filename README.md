@@ -106,12 +106,41 @@ The `Organisasi` model represents organizational memberships or positions held b
 - `tahun_organisasi`: Year of the membership or position.
 - `jabatan_organisasi`: Position held in the organization.
 
-## Image Handling
-The `rename_image` function is used to rename uploaded images based on various attributes such as title, date, and a random number to ensure uniqueness.
 
-## Signals
-Pre-save signals are used to automatically generate slugs for `Category` and `PostNews` models if they are not provided.
+# Dashboard Admin
 
+## 1 Login `Akses to Dashboard`
+![](/screenshot/pakar.bisdigunm.com_adminku_login__next=_adminku_.png)
 ---
+
+## 2 List Model
+![](/screenshot/pakar.bisdigunm.com_adminku_.png)
+---
+
+## 3 Select bidang kepakaran to change 
+![](/screenshot/pakar.bisdigunm.com_adminku_accounts_bidangkepakaran_.png)
+
+## 4 Select pakar to change 
+![](/screenshot/pakar.bisdigunm.com_adminku_accounts_pakar_%20(1).png)
+
+## 5 Change pakar 
+![](/screenshot/pakar.bisdigunm.com_adminku_accounts_pakar_2_change_.png)
+
+## 6 Change Pendidikan
+![](/screenshot/pakar.bisdigunm.com_adminku_accounts_pakar_2_change_%20(1).png)
+
+## 7 Change PENGABDIAN
+![](/screenshot/pakar.bisdigunm.com_adminku_accounts_pakar_2_change_%20(2).png)
+
+## 8 Change ORGANISASI
+![](/screenshot/pakar.bisdigunm.com_adminku_accounts_pakar_2_change_%20(3).png)
+
+
+## 9 Change Books 
+![](/screenshot/pakar.bisdigunm.com_adminku_accounts_pakar_2_change_%20(4).png)
+
+## 10 Change News 
+![](/screenshot/pakar.bisdigunm.com_adminku_accounts_pakar_2_change_%20(5).png)
+
 
 This README provides an overview of the models used in the Kepakaran Web Application. For further details on implementation and usage, please refer to the specific model definitions and their methods.
