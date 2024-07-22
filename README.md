@@ -150,3 +150,6 @@ The `Organisasi` model represents organizational memberships or positions held b
 
 
 This README provides an overview of the models used in the Kepakaran Web Application. For further details on implementation and usage, please refer to the specific model definitions and their methods.
+
+
+#UPDATE
