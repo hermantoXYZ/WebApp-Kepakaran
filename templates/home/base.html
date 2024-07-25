@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,18 +29,32 @@
                 <span class="bar"></span>
                 <span class="bar"></span>
             </div>
-            <!-- <ul class="nav-menu">
+            <ul class="nav-menu">
                 <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Program Studi</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Karya Ilmiah</a></li>
+                <li class="nav-item"><a href="{% url 'program_studi' %}" class="nav-link">Program Studi</a></li>
+                <li class="nav-item"><a href="{% url 'minat_penelitian' %}" class="nav-link">Minat Penelitian</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Bantuan</a></li>
-             
-              
-            </ul> -->
-            <div class="auth-buttons">
-                <a href="{% url 'login' %}" class="btn login">Login</a>
-                <a href="{% url 'register' %}" class="btn register">Register</a>
+            </ul>
+            <div class="social-icons" style="display: block;">
+                <a href="{% url 'login' %}"><i class="fa-solid fa-right-to-bracket"></i></a>
             </div>
+            <div id="floating-button">
+                <button id="btnMusic" class="btn-circle" onclick="playMusic()">
+                    <i class="fa-solid fa-language" id="buttonIcon"></i>
+                </button>
+            </div>
+            <!-- <div class="language-switcher">
+                <form method="post" action="{% url 'set_language' %}">
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ redirect_to }}">
+                    <button type="submit" name="language" value="id">
+                        <img src="/media/logo/id.png" alt="Indonesian" class="flag-icon">
+                    </button>
+                    <button type="submit" name="language" value="en">
+                        <img src="/media/logo/en.png" alt="English" class="flag-icon">
+                    </button>
+                </form>
+            </div> -->
         </div>
     </nav>
 {%block content%}

@@ -1,0 +1,18 @@
+    
+{% extends 'home/base.html' %}
+{% block title %}{{ program.nama_program }}{% endblock %}
+{% block content %}
+    <!-- Testimonial -->
+    <div class="brand-title-wrapper animate__animated animate__slideInLeft"><h5>Minat Penelitian</h5></div>
+    <!-- service -->
+
+    <div class="service-container-tag">
+        {% for tag in tags %}
+               
+
+            <a href="{% url 'users_by_tag' tag.slug %}" class="program-name-tag">#{{ tag.name }}</a>
+        {% endfor %}
+    </div>
+<!-- End service -->
+
+{% endblock %}

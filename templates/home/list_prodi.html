@@ -1,0 +1,16 @@
+
+{% extends 'home/base.html' %}
+{% block title %}{{ program.nama_program }}{% endblock %}
+{% block content %}
+
+
+<div class="service-container">
+{% for program in program_studi %}
+<div class="service">
+<!-- <p class="p-service">Responsif</p> -->
+<a href="{% url 'program_studi_detail' slug=program.slug %}" class="p-service">{{ program.nama_program }}</a>
+</div>
+{% endfor %}
+</div>
+
+{% endblock %}

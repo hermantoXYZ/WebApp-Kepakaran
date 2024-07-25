@@ -35,9 +35,13 @@ SECRET_KEY = 'django-insecure-&)4d4inaf-7u$(e909*@*fg@_z9%oggze4b2jnhto8x6k-=z!4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 # ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'www.web.bisdigunm.com', 'web.bisdigunm.com']
-
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '00c7-114-10-134-251.ngrok-free.app',  # Tambahkan domain ngrok di sini
+]
 
 # Application definition
 
@@ -68,9 +72,21 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',  # Add this middleware
+    
 ]
 
 ROOT_URLCONF = 'pakarku.urls'
+
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://00c7-114-10-134-251.ngrok-free.app',
+]
+
+CSRF_COOKIE_SECURE = True  # Harus disetel ke True jika menggunakan HTTPS
+CSRF_COOKIE_HTTPONLY = False
+CSRF_COOKIE_NAME = 'csrftoken'
+
 
 TEMPLATES = [
     {
@@ -140,15 +156,25 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+
+LANGUAGES = [
+    ('id', ('Indonesian')),
+    ('en', ('English')),
+]
+
+LANGUAGE_CODE = 'id'
+
+USE_I18N = True
+USE_L10N = True
+USE_TZ = True
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
 
 TIME_ZONE = 'UTC'
 
-USE_I18N = True
 
-USE_L10N = True
-
-USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
@@ -160,6 +186,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 AUTH_USER_MODEL = 'accounts.User'
+
 
 
 # Default primary key field type

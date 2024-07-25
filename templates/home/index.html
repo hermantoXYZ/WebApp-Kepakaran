@@ -1,6 +1,8 @@
 {% extends 'home/base.html' %}
 {% block title %}FEB-UNM{% endblock %}
 {% block content %}
+{% load i18n %}
+
 
 
 <div class="container-search">
@@ -16,7 +18,7 @@
 <div class="container">
     <header>
         <h1>BIDANG KEPAKARAN UNM</h1>
-        <p>Menjadi pusat pendidikan ekonomi dan bisnis yang berdaya saing global dengan berwawasan kependidikan dan kewirausahaan pada tahun 2030</p>
+        <p>{% trans "Menjadi pusat pendidikan ekonomi dan bisnis yang berdaya saing global dengan berwawasan kependidikan dan kewirausahaan pada tahun 2030" %}</p>
     </header>
 
     <div class="card-container">
@@ -49,7 +51,7 @@
 </div>
 
     <!-- Testimonial -->
-    <div class="brand-title-wrapper animate__animated animate__slideInLeft"><h5>Minat Penelitian</h5></div>
+    <div class="brand-title-wrapper"><h5>Minat Penelitian</h5></div>
     <!-- service -->
 
     <div class="service-container-tag">
@@ -82,6 +84,33 @@
                             </div>
                         </div>
                     </div>
+
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            const links = document.querySelectorAll('a[data-lang]');
+                            links.forEach(link => {
+                                link.addEventListener('click', function (e) {
+                                    e.preventDefault();
+                                    const language = this.getAttribute('data-lang');
+                                    const url = this.getAttribute('href');
+                                    fetch(url, {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                            'X-CSRFToken': '{{ csrf_token }}',
+                                        },
+                                        body: JSON.stringify({ language: language }),
+                                    }).then(response => {
+                                        if (response.ok) {
+                                            window.location.reload();
+                                        }
+                                    });
+                                });
+                            });
+                        });
+                    </script>
+                    
                     {% endfor %}
                     
 

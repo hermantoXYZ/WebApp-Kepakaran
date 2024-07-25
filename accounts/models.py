@@ -9,6 +9,7 @@ import os
 import random
 from tinymce.models import HTMLField
 from taggit.managers import TaggableManager
+from django.utils.translation import gettext_lazy as _
 
 def rename_image(instance, filename):
     upload_to = 'images/'

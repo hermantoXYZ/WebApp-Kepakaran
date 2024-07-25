@@ -43,16 +43,15 @@ height: 1px;
 }
 
 .navbar {
-    background-color: #05571c;
-    min-height: 88px;
-    padding-left: 5%;
-    padding-right: 5%;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 1px dashed #ccc;
-
-    position: sticky;
-    top: 0px;
+  background: linear-gradient(21deg, rgba(5, 87, 28, 1) 0%, rgb(104 201 8) 100%);
+  min-height: 88px;
+  padding-left: 5%;
+  padding-right: 5%;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px dashed #ccc;
+  position: sticky;
+  top: 0px;
 }
 
 .navbar-container {
@@ -134,6 +133,29 @@ height: 1px;
     gap: 10px;
     display: flex;
 }
+
+
+.auth-buttons .btn {
+    margin-left: 10px;
+}
+
+.language-switcher {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.flag-icon {
+    width: 24px;
+    height: 16px;
+    margin-left: 10px;
+}
+
+/* Tambahkan gaya untuk menjaga jarak antara ikon bendera dan tombol */
+.auth-buttons > a {
+    margin-left: 15px;
+}
+
 
 
 .btn.login {
@@ -261,7 +283,7 @@ height: 1px;
         background-color: #fff;
         justify-content: center;
         z-index: 999;
-        top: 13%;
+        top: 103%;
         align-items: flex-start;
         border-radius: 0px;
         animation-duration: 0.5s; /* Durasi animasi */
@@ -334,7 +356,7 @@ height: 1px;
 
 
 .footer {
-    background-color: #222;
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(12,144,31,1) 0%, rgba(56,45,3,1) 86%);
     color: #fff;
     padding: 24px 5%;
     border-radius: 10px;
@@ -373,7 +395,7 @@ height: 1px;
     font-size: 14px;
     line-height: 1.8;
     letter-spacing: -0.006em;
-    color: #ababab;
+    color: #ffffff;
     text-align: left;
 }
 
@@ -413,7 +435,7 @@ height: 1px;
 .footer-column ul li a {
   padding-top: 4px;
   padding-bottom: 4px;
-  color: #9e9ea9;
+  color: #ffffff;
   font-size: 14px;
   line-height: 24px;
   letter-spacing: -0.006em;
@@ -425,7 +447,7 @@ height: 1px;
     max-width: 1200px;
     text-align: center;
     margin: 20px auto 0;
-    border-top: 1px solid #444;
+    border-top: 1px solid #fff3f3;
     padding-top: 10px;
 }
 
@@ -467,19 +489,22 @@ height: 1px;
 }
 
 
- .social-icons a {
+
+
+        .social-icons a {
             text-decoration: none;
             color: white; /* Icon color */
             background-color: #05571c; /* Background color for Facebook icon */
             padding: 10px;
             margin: 5px;
             width: 40px;
+            align-content: center;
+            align-items: center;
             justify-content: center;
             height: 40px;
             display: inline-flex;
             transition: background-color 0.3s, color 0.3s;
         }
-
         .social-icons a:hover {
             background-color: #1d2d50; /* Background color on hover */
             color: #f1c40f; /* Icon color on hover */
@@ -1489,3 +1514,36 @@ header p {
 }
 
 
+
+/* Modal Translated */
+
+/* Section Music */
+#floating-button {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 16px;
+    position: fixed;
+    right: 0;
+    bottom: 15px;
+    gap: 12px;
+    z-index: 1000; /* Ensure it appears above other content */
+}
+
+.btn-circle {
+    background-color: #007bff; /* Customize button color */
+    border: none;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #fff; /* Icon color */
+    font-size: 24px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Add some shadow for a floating effect */
+}
+
+.btn-circle:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}

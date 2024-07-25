@@ -8,6 +8,7 @@ from django.views.generic import ListView, DetailView
 from .models import Pakar, BidangKepakaran, Penelitian, Book, InTheNews, Organisasi, Pendidikan, Pengabdian, ProgramStudi
 from django.shortcuts import render, get_object_or_404
 from taggit.models import Tag
+from django.utils.translation import gettext as _
 
 
 def is_dosen(user):
@@ -631,4 +632,13 @@ def users_by_tag(request, tag_slug):
     return render(request, 'kepakaran/users_by_tag.html', context)
 
 
+def program_studi_list(request):
+    program_studi = ProgramStudi.objects.all()
+    return render(request, 'home/list_prodi.html', {'program_studi': program_studi})
 
+def minat_penelitian_list(request):
+    tags = Tag.objects.all()
+    context = {
+        'tags': tags
+    }
+    return render(request, 'home/list_minat.html', context)
